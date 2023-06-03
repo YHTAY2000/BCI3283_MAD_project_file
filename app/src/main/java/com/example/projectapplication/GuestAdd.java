@@ -2,6 +2,7 @@ package com.example.projectapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +11,7 @@ import android.widget.EditText;
 public class GuestAdd extends AppCompatActivity {
 
     EditText name, age, gender, address, phone;
-    Button submit_button;
+    Button submit_button, mybtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +23,7 @@ public class GuestAdd extends AppCompatActivity {
         address = findViewById(R.id.address_input);
         phone = findViewById(R.id.phone_input);
         submit_button = findViewById(R.id.submit_button);
+        mybtn = (Button) findViewById(R.id.mybtn);
 
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +36,14 @@ public class GuestAdd extends AppCompatActivity {
                         phone.getText().toString().trim(),
                         address.getText().toString().trim()
                 );
+            }
+        });
+
+        mybtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(GuestAdd.this, Guest_List.class);
+                startActivity(intent);
             }
         });
     }

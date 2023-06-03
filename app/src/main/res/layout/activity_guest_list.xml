@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Guest List"
+                android:textAlignment="center"
+                android:textSize="34dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/eventName"
+                android:layout_width="312dp"
+                android:layout_height="58dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_rectagle"
+                android:padding="5dp"
+                android:text="Event 1"
+                android:textAlignment="viewStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:text="Attend"
+                android:textAlignment="center"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eventName" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycleView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/button_rectagle"
+                android:padding="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="76dp"
+                android:text="Check-In"
+                android:textAlignment="center"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycleView" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycleView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/button_rectagle"
+                android:padding="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="182dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/button_style"
+                android:padding="10dp"
+                android:text="BACK"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycleView2" />
+
+            <Button
+                android:id="@+id/checkInBtn"
+                android:layout_width="182dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_style"
+                android:padding="10dp"
+                android:text="CHECK IN"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/button"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="@+id/button"
+                app:layout_constraintTop_toBottomOf="@+id/button" />
+
+
+            <Button
+                android:id="@+id/addBtn"
+                android:layout_width="182dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_style"
+                android:padding="10dp"
+                android:text="ADD"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/checkInBtn"
+                app:layout_constraintTop_toBottomOf="@+id/checkInBtn" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

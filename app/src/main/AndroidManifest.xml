@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:allowBackup="true"
@@ -12,23 +13,34 @@
         android:theme="@style/Theme.ProjectApplication"
         tools:targetApi="31">
         <activity
+            android:name=".Guest_Details"
+            android:exported="false" />
+        <activity
+            android:name=".Guest_List"
+            android:exported="false"></activity>
+        <activity
+            android:name=".GuestsManagement"
+            android:exported="false" />
+        <activity
             android:name=".GuestAdd"
+            android:exported="true"
             android:label="Guest Information"
             android:parentActivityName=".GuestList">
-        </activity>
-        <activity
-            android:name=".MainActivity">
-
-        </activity>
-        <activity
-            android:name=".GuestList"
-            android:label="Guest List"
-            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>>
+            </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".GuestList"
+            android:exported="false"
+            android:label="Guest List"></activity>
+        <activity android:name=".CaptureAct"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="false"
+            android:theme="@style/zxing_CaptureTheme" />
     </application>
 
 </manifest>
