@@ -1,6 +1,7 @@
 package com.example.projectapplication;
 
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -38,12 +39,12 @@ public class MyDatabase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_NAME +
-                       " ( " + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                       COLUMN_NAME + " TEXT, " +
-                       COLUMN_GENDER + " TEXT, " +
-                       COLUMN_AGE + " INTEGER, " +
-                       COLUMN_ADDRESS + " TEXT, " +
-                       COLUMN_PHONE + " TEXT );";
+                " ( " + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_NAME + " TEXT, " +
+                COLUMN_GENDER + " TEXT, " +
+                COLUMN_AGE + " INTEGER, " +
+                COLUMN_ADDRESS + " TEXT, " +
+                COLUMN_PHONE + " TEXT );";
 
         String query2 = "CREATE TABLE " + TABLE_NAME2 +
                 " ( " + COLUMN_ID2 + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -78,7 +79,25 @@ public class MyDatabase extends SQLiteOpenHelper {
         }
     }
 
-    void addGuestCheckIn(String name){
+    public boolean addGuestforGuestMgm(String name, String gender, int age, String address, String phone){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(COLUMN_NAME, name);
+        cv.put(COLUMN_GENDER, gender);
+        cv.put(COLUMN_AGE, age);
+        cv.put(COLUMN_ADDRESS, address);
+        cv.put(COLUMN_PHONE, phone);
+
+        long result = db.insert(TABLE_NAME, null, cv);
+        if(result == -1){
+            return  false;
+        }else{
+            return true;
+        }
+    }
+
+    public boolean addGuestCheckIn(String name){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -86,9 +105,9 @@ public class MyDatabase extends SQLiteOpenHelper {
         
         long result = db.insert(TABLE_NAME2, null, cv);
         if(result == -1){
-            Toast.makeText(context, "Fail To Insert", Toast.LENGTH_SHORT).show();
+            return false;
         }else{
-            Toast.makeText(context, "Insert Successfully", Toast.LENGTH_SHORT).show();
+            return true;
         }
     }
 
@@ -120,9 +139,9 @@ public class MyDatabase extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(data, null);
 
         if (cursor.moveToNext()){
-            return true;
+            return false;
         }else{
-            return  false;
+            return  true;
         }
     }
 

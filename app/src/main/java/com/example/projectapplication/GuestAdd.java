@@ -22,7 +22,7 @@ public class GuestAdd extends AppCompatActivity {
         gender = findViewById(R.id.gender_input);
         address = findViewById(R.id.address_input);
         phone = findViewById(R.id.phone_input);
-        submit_button = findViewById(R.id.submit_button);
+        submit_button = findViewById(R.id.scanBtn);
         mybtn = (Button) findViewById(R.id.mybtn);
 
         submit_button.setOnClickListener(new View.OnClickListener() {
