@@ -6,11 +6,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-
-import org.w3c.dom.Text;
 
 public class MyDatabase extends SQLiteOpenHelper {
 
@@ -32,12 +31,13 @@ public class MyDatabase extends SQLiteOpenHelper {
     private static final String COLUMN_NAME2 = "guest_name";
 
     //Event details Table
-    public static final String TABLE_NAME3 = "event";
-    public static final String COLUMN_ID3 = "event_id";
-    public static final String COLUMN_EVENT = "event_name";
-    public static final String COLUMN_ORGANIZER = "event_organizer";
-    public static final String COLUMN_DATE = "event_date";
-    public static final String COLUMN_TIME = "event_time";
+    private static final String TABLE_NAME3 = "event";
+    private static final String COLUMN_ID3 = "event_id";
+    private static final String COLUMN_EVENT = "event_name";
+    private static final String COLUMN_ORGANIZER = "event_organizer";
+    private static final String COLUMN_DATE = "event_date";
+    private static final String COLUMN_TIME = "event_time";
+    private static final String COLUMN_IMAGE = "event_image";
 
     public MyDatabase(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -58,14 +58,24 @@ public class MyDatabase extends SQLiteOpenHelper {
                 " ( " + COLUMN_ID2 + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_NAME2 + " TEXT ); ";
 
+        String insertEvent = "CREATE TABLE " + TABLE_NAME3 +
+                "( " + COLUMN_ID3 + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_EVENT + " TEXT, " +
+                COLUMN_ORGANIZER + " TEXT, " +
+                COLUMN_DATE + " TEXT, " +
+                COLUMN_TIME + " TEXT," +
+                COLUMN_IMAGE + " BLOB );";
+
         db.execSQL(query);
         db.execSQL(query2);
+        db.execSQL(insertEvent);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME2);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME3);
         onCreate(db);
     }
 
@@ -162,5 +172,20 @@ public class MyDatabase extends SQLiteOpenHelper {
             cursor = db.rawQuery(query, null);
         }
         return cursor;
+    }
+
+    //insert event
+    public long addEvent(String event, String organizer, String date, String time, byte[] image){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_EVENT, event);
+        values.put(COLUMN_ORGANIZER, organizer);
+        values.put(COLUMN_DATE, date);
+        values.put(COLUMN_TIME, time);
+        values.put(COLUMN_IMAGE, image);
+        long eventId = db.insert("event", null, values);
+        db.close();
+
+        return eventId;
     }
 }

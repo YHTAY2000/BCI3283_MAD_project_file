@@ -69,7 +69,7 @@
             app:layout_constraintTop_toBottomOf="@+id/eventImage" />
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/eventNameTxt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
@@ -82,7 +82,7 @@
             app:layout_constraintTop_toBottomOf="@+id/uploadButton" />
 
         <EditText
-            android:id="@+id/editTextText2"
+            android:id="@+id/organizerNameTxt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -90,10 +90,10 @@
             android:hint="Organizer Name"
             android:inputType="text"
             android:textColorHint="#000000"
-            app:layout_constraintEnd_toEndOf="@+id/editTextText"
+            app:layout_constraintEnd_toEndOf="@+id/eventNameTxt"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/editTextText"
-            app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+            app:layout_constraintStart_toStartOf="@+id/eventNameTxt"
+            app:layout_constraintTop_toBottomOf="@+id/eventNameTxt" />
 
         <EditText
             android:id="@+id/dateText"
@@ -104,8 +104,8 @@
             android:ems="10"
             android:hint="dd/mm/yy"
             android:inputType="date"
-            app:layout_constraintStart_toStartOf="@+id/editTextText2"
-            app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+            app:layout_constraintStart_toStartOf="@+id/organizerNameTxt"
+            app:layout_constraintTop_toBottomOf="@+id/organizerNameTxt" />
 
         <EditText
             android:id="@+id/timeText"
@@ -116,16 +116,16 @@
             android:ems="10"
             android:hint="00:00 am"
             android:inputType="time"
-            app:layout_constraintEnd_toEndOf="@+id/editTextText2"
-            app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+            app:layout_constraintEnd_toEndOf="@+id/organizerNameTxt"
+            app:layout_constraintTop_toBottomOf="@+id/organizerNameTxt" />
 
         <Button
-            android:id="@+id/addBTN"
+            android:id="@+id/saveEventButton"
             android:layout_width="134dp"
             android:layout_height="53dp"
             android:layout_marginTop="104dp"
             android:backgroundTint="#3F51B5"
-            android:text="ADD"
+            android:text="SAVE"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/timeText"
             app:layout_constraintStart_toStartOf="@+id/dateText"
