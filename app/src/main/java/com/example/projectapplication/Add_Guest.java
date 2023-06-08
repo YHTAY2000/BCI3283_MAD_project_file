@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -66,12 +67,32 @@ public class Add_Guest extends AppCompatActivity {
     }
 
     ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result -> {
-        boolean status = db.addGuestCheckIn(result.getContents());
+        Cursor data =  db.searchGuestInfo(result.getContents());
         AlertDialog.Builder builder = new AlertDialog.Builder(Add_Guest.this);
         builder.setTitle("Status");
 
-        if (status) {
-            builder.setMessage("Successful Added");
+        int idIndex = data.getColumnIndex("id");
+        int nameIndex = data.getColumnIndex("name");
+        int addressIndex = data.getColumnIndex("address");
+
+        if (data.moveToFirst()) {
+            do {
+                if (idIndex != -1) {
+                    int id = data.getInt(idIndex);
+                }
+
+                if (nameIndex != -1) {
+                    String name = data.getString(nameIndex);
+
+                }
+
+                if (addressIndex != -1) {
+                    String address = data.getString(addressIndex);
+
+                }
+
+            }while (data.moveToNext());
+
         } else {
             builder.setMessage("Something Went Wrong!");
         }

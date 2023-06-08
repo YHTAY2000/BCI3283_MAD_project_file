@@ -30,6 +30,14 @@ public class MyDatabase extends SQLiteOpenHelper {
     private static final String COLUMN_ID2 = "id";
     private static final String COLUMN_NAME2 = "guest_name";
 
+    //User Profile
+    private static final String TABLE_NAME3 = "user_profile";
+    private static final String COLUMN_ID3 = "id";
+    private static final String COLUMN_NAME3 = "user_name";
+    private static final String COLUMN_GENDER3 = "user_gender";
+    private static final String COLUMN_AGE3 = "user_age";
+    private static final String COLUMN_ADDRESS3 = "user_address";
+    private static final String COLUMN_PHONE3 = "User_phonenum";
 
     public MyDatabase(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -50,8 +58,17 @@ public class MyDatabase extends SQLiteOpenHelper {
                 " ( " + COLUMN_ID2 + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_NAME2 + " TEXT ); ";
 
+        String query3 = "CREATE TABLE " + TABLE_NAME3 +
+                " ( " + COLUMN_ID3 + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_NAME3 + " TEXT, " +
+                COLUMN_GENDER3 + " TEXT, " +
+                COLUMN_AGE3 + " INTEGER, " +
+                COLUMN_ADDRESS3 + " TEXT, " +
+                COLUMN_PHONE3+ " TEXT );";
+
         db.execSQL(query);
         db.execSQL(query2);
+        db.execSQL(query3);
     }
 
     @Override
@@ -95,6 +112,12 @@ public class MyDatabase extends SQLiteOpenHelper {
         }else{
             return true;
         }
+    }
+
+    public Cursor searchGuestInfo(String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME3,null);
+        return data;
     }
 
     public boolean addGuestCheckIn(String name){
