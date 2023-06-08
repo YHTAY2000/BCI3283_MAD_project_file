@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/newEventTitle"
+        android:id="@+id/EventTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -35,8 +35,8 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:background="@drawable/button_back"
-        app:layout_constraintBottom_toBottomOf="@+id/newEventTitle"
-        app:layout_constraintEnd_toStartOf="@+id/newEventTitle"
+        app:layout_constraintBottom_toBottomOf="@+id/EventTitle"
+        app:layout_constraintEnd_toStartOf="@+id/EventTitle"
         app:layout_constraintHorizontal_bias="0.156"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -51,11 +51,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newEventTitle"
+        app:layout_constraintTop_toBottomOf="@+id/EventTitle"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <Button
-        android:id="@+id/uploadBTN"
+        android:id="@+id/uploadButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Uplaod Image"
@@ -74,7 +74,7 @@
         android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="@+id/eventImage"
         app:layout_constraintStart_toStartOf="@+id/eventImage"
-        app:layout_constraintTop_toBottomOf="@+id/uploadBTN" />
+        app:layout_constraintTop_toBottomOf="@+id/uploadButton" />
 
     <EditText
         android:id="@+id/editTextText2"
@@ -99,7 +99,8 @@
         android:hint="dd/mm/yy"
         android:inputType="date"
         app:layout_constraintStart_toStartOf="@+id/editTextText2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextText2"
+        android:clickable="true" />
 
     <EditText
         android:id="@+id/timeText"
@@ -110,14 +111,17 @@
         android:hint="00:00 am"
         android:inputType="time"
         app:layout_constraintEnd_toEndOf="@+id/editTextText2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextText2"
+        android:clickable="true" />
 
     <Button
         android:id="@+id/addBTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="134dp"
+        android:layout_height="53dp"
         android:layout_marginTop="104dp"
+        android:backgroundTint="#3F51B5"
         android:text="ADD"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/timeText"
         app:layout_constraintStart_toStartOf="@+id/dateText"
         app:layout_constraintTop_toBottomOf="@+id/timeText" />

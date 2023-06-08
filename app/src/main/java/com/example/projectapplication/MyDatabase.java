@@ -1,7 +1,6 @@
 package com.example.projectapplication;
 
 
-import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -10,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import org.w3c.dom.Text;
 
 public class MyDatabase extends SQLiteOpenHelper {
 
@@ -30,6 +31,13 @@ public class MyDatabase extends SQLiteOpenHelper {
     private static final String COLUMN_ID2 = "id";
     private static final String COLUMN_NAME2 = "guest_name";
 
+    //Event details Table
+    public static final String TABLE_NAME3 = "event";
+    public static final String COLUMN_ID3 = "event_id";
+    public static final String COLUMN_EVENT = "event_name";
+    public static final String COLUMN_ORGANIZER = "event_organizer";
+    public static final String COLUMN_DATE = "event_date";
+    public static final String COLUMN_TIME = "event_time";
 
     public MyDatabase(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

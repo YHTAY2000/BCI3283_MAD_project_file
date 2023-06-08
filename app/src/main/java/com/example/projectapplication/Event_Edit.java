@@ -16,7 +16,7 @@ import android.widget.TimePicker;
 
 import java.util.Calendar;
 
-public class Event_Add extends AppCompatActivity {
+public class Event_Edit extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
     private EditText editTextDate;
@@ -29,7 +29,7 @@ public class Event_Add extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_add);
+        setContentView(R.layout.activity_event_edit);
 
         uploadBTN = findViewById(R.id.uploadButton);
         eventImage = findViewById(R.id.eventImage);
@@ -124,4 +124,5 @@ public class Event_Add extends AppCompatActivity {
 
         timePickerDialog.show();
     }
+
 }
