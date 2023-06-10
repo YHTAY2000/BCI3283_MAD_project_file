@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.Objects;
+
 public class MyDatabase extends SQLiteOpenHelper {
 
     private Context context;
@@ -169,7 +171,25 @@ public class MyDatabase extends SQLiteOpenHelper {
         return  data;
     }
 
+    public void edit(String name, String type, String id){
+        SQLiteDatabase db = this.getWritableDatabase();
 
+        if (type.equals("name")){
+            db.execSQL("UPDATE " + TABLE_NAME4 + " SET " + COLUMN_NAME4 + " = ? WHERE " + COLUMN_ID4 + " = " + id , new String[]{name});
+
+        }else if (type.equals("age")){
+            db.execSQL("UPDATE " + TABLE_NAME4 + " SET " + COLUMN_AGE4 + " = ? WHERE " + COLUMN_ID4 + " = " + id , new String[]{name});
+
+        }else if (type.equals("gender")) {
+            db.execSQL("UPDATE " + TABLE_NAME4 + " SET " + COLUMN_GENDER4 + " = ? WHERE " + COLUMN_ID4 + " = " + id , new String[]{name});
+
+        }else if (type.equals("address")) {
+            db.execSQL("UPDATE " + TABLE_NAME4 + " SET " + COLUMN_ADDRESS4 + " = ? WHERE " + COLUMN_ID4 + " = " + id , new String[]{name});
+
+        }else if (type.equals("number")) {
+            db.execSQL("UPDATE " + TABLE_NAME4 + " SET " + COLUMN_PHONE4 + " = ? WHERE " + COLUMN_ID4 + " = " + id , new String[]{name});
+        }
+    }
 
     public boolean delete(String id){
         SQLiteDatabase db = this.getWritableDatabase();

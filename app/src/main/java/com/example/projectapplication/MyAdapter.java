@@ -145,6 +145,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     } else {
                         while (cursor.moveToNext()) {
                             Intent intent = new Intent(view.getContext(), Guest_Details.class);
+                            String id2 = cursor.getString(0);
+                            intent.putExtra("id",  id2);
                             intent.putExtra("name", cursor.getString(1));
                             intent.putExtra("gender", cursor.getString(2));
                             intent.putExtra("age", cursor.getString(3));

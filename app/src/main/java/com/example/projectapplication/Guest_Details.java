@@ -12,13 +12,14 @@ import android.widget.TextView;
 public class Guest_Details extends AppCompatActivity {
 
     TextView name, gender, age, address, phoneNum;
-    Button back;
+    Button back, edit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_details);
 
+        String outputid = getIntent().getStringExtra("id");
         String outputname = getIntent().getStringExtra("name");
         String outputgender = getIntent().getStringExtra("gender");
         String outputage = getIntent().getStringExtra("age");
@@ -31,6 +32,7 @@ public class Guest_Details extends AppCompatActivity {
         phoneNum = (TextView) findViewById(R.id.phoneNum);
         age = (TextView) findViewById(R.id.inputAge);
         back = (Button) findViewById(R.id.backBtn);
+        edit = (Button) findViewById(R.id.editBtn);
 
         name.setText(outputname);
         gender.setText(outputgender);
@@ -42,6 +44,20 @@ public class Guest_Details extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Guest_Details.this, Guest_List.class);
+            }
+        });
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Guest_Details.this, Edit_Details.class);
+                intent.putExtra("id", outputid);
+                intent.putExtra("name", outputname);
+                intent.putExtra("gender", outputgender);
+                intent.putExtra("age",outputage);
+                intent.putExtra("address",outputaddress);
+                intent.putExtra("phoNum", outputphoneNum);
+                startActivity(intent);
             }
         });
 
