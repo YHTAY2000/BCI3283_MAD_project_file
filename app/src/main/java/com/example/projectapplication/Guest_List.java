@@ -28,9 +28,11 @@ public class Guest_List extends AppCompatActivity {
     MyAdapter mAdapter;
 
     MyAdapter2 mAdapter2;
+    MyAdapter3 mAdapter3;
     Button checkIn, add;
     List<item> itemList1;
     List<CheckInItem> itemList2;
+    List<item> itemList3;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class Guest_List extends AppCompatActivity {
         db = new MyDatabase(this);
         itemList1 = new ArrayList<>();
         itemList2 = new ArrayList<>();
+        itemList3 = new ArrayList<>();
 
         loadDataFromDatabase();
 
@@ -54,6 +57,8 @@ public class Guest_List extends AppCompatActivity {
         mAdapter2 = new MyAdapter2(this, itemList2);
         checkInRecycleView.setLayoutManager(new LinearLayoutManager(this));
         checkInRecycleView.setAdapter(mAdapter2);
+
+
 
         checkIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +91,8 @@ public class Guest_List extends AppCompatActivity {
         }
 
         if (data2.getCount() == 0) {
-            Toast.makeText(this, "No Data Found", Toast.LENGTH_SHORT).show();
+            itemList2.add(new CheckInItem("Not Data Found"));
+            Toast.makeText(this, "No Check In Found", Toast.LENGTH_SHORT).show();
         } else {
             while (data2.moveToNext()) {
                 String name = data2.getString(1);

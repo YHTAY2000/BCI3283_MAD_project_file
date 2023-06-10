@@ -17,13 +17,23 @@ public class MyDatabase extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "Event.db";
     private static final int DATABASE_VERSION = 1;
 
-    private static final String TABLE_NAME = "guest";
+    //use for profile details
+    private static final String TABLE_NAME = "profile_info";
     private static final String COLUMN_ID = "_id";
     private static final String COLUMN_NAME = "guest_name";
     private static final String COLUMN_GENDER = "guest_gender";
     private static final String COLUMN_AGE = "guest_age";
     private static final String COLUMN_ADDRESS = "guest_address";
     private static final String COLUMN_PHONE = "guest_phonenum";
+
+    //Add Guest Table
+    private static final String TABLE_NAME4 = "guest_list";
+    private static final String COLUMN_ID4 = "id";
+    private static final String COLUMN_NAME4 = "guest_name";
+    private static final String COLUMN_GENDER4 = "guest_gender";
+    private static final String COLUMN_AGE4 = "guest_age";
+    private static final String COLUMN_ADDRESS4 = "guest_address";
+    private static final String COLUMN_PHONE4 = "guest_phonenum";
 
     //Check-in Table
     private static final String TABLE_NAME2 = "check_in";
@@ -66,8 +76,18 @@ public class MyDatabase extends SQLiteOpenHelper {
                 COLUMN_TIME + " TEXT," +
                 COLUMN_IMAGE + " BLOB );";
 
+        String query3 = "CREATE TABLE " + TABLE_NAME4 +
+                " ( " + COLUMN_ID4 + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_NAME4 + " TEXT, " +
+                COLUMN_GENDER4 + " TEXT, " +
+                COLUMN_AGE4 + " INTEGER, " +
+                COLUMN_ADDRESS4 + " TEXT, " +
+                COLUMN_PHONE4 + " TEXT );";
+
+
         db.execSQL(query);
         db.execSQL(query2);
+        db.execSQL(query3);
         db.execSQL(insertEvent);
     }
 
@@ -97,6 +117,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         }
     }
 
+    //add guest - TAY
     public boolean addGuestforGuestMgm(String name, String gender, int age, String address, String phone){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -107,7 +128,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         cv.put(COLUMN_ADDRESS, address);
         cv.put(COLUMN_PHONE, phone);
 
-        long result = db.insert(TABLE_NAME, null, cv);
+        long result = db.insert(TABLE_NAME4, null, cv);
         if(result == -1){
             return  false;
         }else{
@@ -131,13 +152,13 @@ public class MyDatabase extends SQLiteOpenHelper {
 
     public Cursor getGuestList(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME4, null);
         return  data;
     }
 
     public Cursor getID(String name) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_NAME + " = ?", new String[]{name});
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME4 + " WHERE " + COLUMN_NAME + " = ?", new String[]{name});
         return data;
     }
 
@@ -152,7 +173,7 @@ public class MyDatabase extends SQLiteOpenHelper {
 
     public boolean delete(String id){
         SQLiteDatabase db = this.getWritableDatabase();
-        String data = "DELETE FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + " = " + id;
+        String data = "DELETE FROM " + TABLE_NAME4 + " WHERE " + COLUMN_ID4 + " = " + id;
 
         Cursor cursor = db.rawQuery(data, null);
 
@@ -187,5 +208,11 @@ public class MyDatabase extends SQLiteOpenHelper {
         db.close();
 
         return eventId;
+    }
+
+    public Cursor searchGuestInfo(String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_NAME + " = ?", new String[]{name});
+        return  data;
     }
 }
