@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,22 +18,51 @@
         android:theme="@style/Theme.ProjectApplication"
         tools:targetApi="31">
         <activity
+            android:name=".Edit_Details"
+            android:exported="false" />
+        <activity
+            android:name=".Event_Edit"
+            android:exported="false" />
+        <activity
+            android:name=".Event_Add"
+            android:exported="true" />
+        <activity
+            android:name=".ConfirmPage"
+            android:exported="false" />
+        <activity
+            android:name=".Add_Guest"
+            android:exported="false" />
+        <activity
+            android:name=".Guest_Details"
+            android:exported="false" />
+        <activity
+            android:name=".Guest_List"
+            android:exported="false" />
+        <activity
+            android:name=".GuestsManagement"
+            android:exported="false" />
+        <activity
             android:name=".GuestAdd"
+            android:exported="true"
             android:label="Guest Information"
             android:parentActivityName=".GuestList">
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".GuestList"
-            android:label="Guest List">
-        </activity>
+            android:exported="false"
+            android:label="Guest List" />
+        <activity
+            android:name=".CaptureAct"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="false"
+            android:theme="@style/zxing_CaptureTheme" />
     </application>
 
 </manifest>
