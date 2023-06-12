@@ -43,15 +43,16 @@
         tools:layout_editor_absoluteY="311dp" />
 
     <Button
-            android:id="@+id/getstarted"
-            android:layout_width="171dp"
-            android:layout_height="52dp"
-            android:backgroundTint="#00B2FF"
-            android:text="Get Started"
-            android:textAlignment="center"
-            app:cornerRadius="24dp"
-            tools:layout_editor_absoluteX="132dp"
-            tools:layout_editor_absoluteY="570dp" />
+        android:id="@+id/getstarted"
+        android:layout_width="171dp"
+        android:layout_height="52dp"
+        android:backgroundTint="#00B2FF"
+        android:text="Get Started"
+        android:textAlignment="center"
+        app:cornerRadius="20dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="132dp"
+        tools:layout_editor_absoluteY="573dp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -60,7 +61,8 @@
         android:text="Log in"
         android:textColor="@color/white"
         tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="638dp" />
+        tools:layout_editor_absoluteY="638dp"
+        tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/textView3"
@@ -69,7 +71,8 @@
             android:text="Already have an account ?"
             android:textColor="#0C0C0C"
             tools:layout_editor_absoluteX="116dp"
-            tools:layout_editor_absoluteY="638dp" />
+            tools:layout_editor_absoluteY="638dp"
+            tools:ignore="MissingConstraints" />
 
 
 
