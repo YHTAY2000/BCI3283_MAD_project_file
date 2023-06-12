@@ -3,19 +3,30 @@ package com.example.projectapplication;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-public class MainPage extends AppCompatActivity implements View.OnClickListener {
 
-    ConstraintLayout mMainPage;
-    Button getstarted;
+public class MainPage extends AppCompatActivity {
+    private Button getstarted;
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mainpage);
-        mMainPage=findViewById(R.id.main_page);
-        getstarted=findViewById(R.id.getstarted);
+        setContentView(R.layout.register);
 
+        getstarted = (Button)findViewById(R.id.getstarted);
+        getstarted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {openRegister();
+            }
+        });
+    }
+
+    public void openRegister(){
+        Intent intent = new Intent(getApplicationContext(), RegisterPage.class);
+        startActivity(intent);
     }
 }
 
