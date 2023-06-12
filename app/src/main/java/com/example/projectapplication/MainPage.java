@@ -1,20 +1,30 @@
 package com.example.projectapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.Toast;
-import java.util.concurrent.Executor;
-
 public class MainPage extends AppCompatActivity implements View.OnClickListener {
 
+    ConstraintLayout mMainPage;
+    Button getstarted;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainpage);
+        mMainPage=findViewById(R.id.main_page);
+        getstarted=findViewById(R.id.getstarted);
 
     }
 }
+
+
+
+
+
+
+
+
+
+
