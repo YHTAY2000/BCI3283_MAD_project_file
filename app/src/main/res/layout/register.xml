@@ -52,6 +52,12 @@
         tools:layout_editor_absoluteX="67dp"
         tools:layout_editor_absoluteY="546dp" />
 
+    <ProgressBar
+        android:id="@+id/progreeBar"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
     <Button
         android:id="@+id/register"
         android:layout_width="151dp"
@@ -59,9 +65,21 @@
         android:backgroundTint="#00B2FF"
         android:text="Register"
         android:textColorHint="#00B2FF"
-        app:cornerRadius="24dp"
+        android:cornerRadius="24dp"
         tools:layout_editor_absoluteX="131dp"
         tools:layout_editor_absoluteY="629dp"
         tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/loginNow"
+        android:layout_width="239dp"
+        android:layout_height="29dp"
+        android:text="@string/already_have_an_account_log_in"
+        android:textAlignment="center"
+        android:textColor="#0B0A0A"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="91dp"
+        tools:layout_editor_absoluteY="696dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

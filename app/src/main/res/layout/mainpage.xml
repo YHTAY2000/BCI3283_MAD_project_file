@@ -23,15 +23,15 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="360dp"
+        android:layout_height="48dp"
         android:text="Complete Event Solution Provider in Asia. we have everything you need under one roof!"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="123dp" />
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="127dp" />
 
     <ImageView
         android:id="@+id/imageView"

@@ -17,7 +17,7 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress2"
+        android:id="@+id/editTextEmail"
         android:layout_width="250dp"
         android:layout_height="57dp"
         android:backgroundTint="@color/white"
@@ -30,7 +30,7 @@
         tools:layout_editor_absoluteY="346dp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/editTextPassword"
         android:layout_width="245dp"
         android:layout_height="67dp"
         android:backgroundTint="@color/white"
@@ -42,14 +42,35 @@
         tools:layout_editor_absoluteX="91dp"
         tools:layout_editor_absoluteY="435dp" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonlogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/teal_200"
         android:text="Login"
         app:cornerRadius="20dp"
         tools:layout_editor_absoluteX="164dp"
-        tools:layout_editor_absoluteY="541dp" />
+        tools:layout_editor_absoluteY="541dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/registerNow"
+        android:layout_width="282dp"
+        android:layout_height="28dp"
+        android:text="@string/don_t_have_an_account_register_now"
+        android:textAlignment="center"
+        android:textColor="#0B0A0A"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="75dp"
+        tools:layout_editor_absoluteY="601dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

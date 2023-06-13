@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Project Application</string>
+    <string name="already_have_an_account_log_in">Already have an account ? Log In</string>
+    <string name="already_have_and_account_log_in_android_layout_width">Already have and account ? Log in android:layout_width=</string>
+    <string name="already_have_and_account_log_in" />
+    <string name="don_t_have_an_account_register_now">Don\'t have an account ? Register Now</string>
 </resources>
