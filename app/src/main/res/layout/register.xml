@@ -12,7 +12,8 @@
         android:layout_height="271dp"
         app:srcCompat="@drawable/register1"
         tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="25dp" />
+        tools:layout_editor_absoluteY="25dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
@@ -24,7 +25,8 @@
         android:text="Email"
         android:textColor="#EFE6E6"
         tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="375dp" />
+        tools:layout_editor_absoluteY="375dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editText2"
@@ -35,7 +37,8 @@
         android:text="Confirm Password"
         android:textColor="#EFE6E6"
         tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="542dp" />
+        tools:layout_editor_absoluteY="542dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editText1"
@@ -46,17 +49,19 @@
         android:text="Password"
         android:textColor="#EFE6E6"
         tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="463dp" />
+        tools:layout_editor_absoluteY="463dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/register"
+        android:layout_width="151dp"
+        android:layout_height="53dp"
         android:backgroundTint="#00B2FF"
-        android:text="Button"
-        app:cornerRadius="20dp"
+        android:text="Register"
         android:textColorHint="#00B2FF"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="629dp" />
+        app:cornerRadius="24dp"
+        tools:layout_editor_absoluteX="131dp"
+        tools:layout_editor_absoluteY="629dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
