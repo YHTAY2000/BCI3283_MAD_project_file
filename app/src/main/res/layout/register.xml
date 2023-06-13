@@ -16,7 +16,7 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/editTextEmail"
         android:layout_width="304dp"
         android:layout_height="66dp"
         android:backgroundTint="@color/white"
@@ -29,28 +29,28 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editText2"
-        android:layout_width="304dp"
-        android:layout_height="66dp"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:text="Confirm Password"
-        android:textColor="#EFE6E6"
-        tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="542dp"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/editTextPassword"
         android:layout_width="304dp"
         android:layout_height="66dp"
         android:backgroundTint="@color/white"
         android:ems="10"
         android:text="Password"
         android:textColor="#EFE6E6"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="463dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="457dp" />
+
+    <EditText
+        android:id="@+id/editTextConfirmPassword"
+        android:layout_width="304dp"
+        android:layout_height="66dp"
+        android:backgroundTint="@color/white"
+        android:ems="10"
+        android:text="Confirm Password"
+        android:textColor="#EFE6E6"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="546dp" />
 
     <Button
         android:id="@+id/register"
