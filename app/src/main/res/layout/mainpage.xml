@@ -15,23 +15,23 @@
         android:text="e-Party"
         android:textAlignment="center"
         android:textColor="#F6F2F2"
-        android:textSize="24sp"
+        android:textSize="34sp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="156dp"
-        tools:layout_editor_absoluteY="69dp" />
+        tools:layout_editor_absoluteX="139dp"
+        tools:layout_editor_absoluteY="74dp" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="322dp"
+        android:layout_height="117dp"
         android:text="Complete Event Solution Provider in Asia. we have everything you need under one roof!"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="20sp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="123dp" />
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="145dp" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -43,7 +43,7 @@
         tools:layout_editor_absoluteY="311dp" />
 
     <Button
-        android:id="@+id/getstarted"
+        android:id="@+id/getStarted"
         android:layout_width="171dp"
         android:layout_height="52dp"
         android:backgroundTint="#00B2FF"
@@ -53,26 +53,6 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="132dp"
         tools:layout_editor_absoluteY="573dp" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Log in"
-        android:textColor="@color/white"
-        tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="638dp"
-        tools:ignore="MissingConstraints" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Already have an account ?"
-            android:textColor="#0C0C0C"
-            tools:layout_editor_absoluteX="116dp"
-            tools:layout_editor_absoluteY="638dp"
-            tools:ignore="MissingConstraints" />
 
 
 

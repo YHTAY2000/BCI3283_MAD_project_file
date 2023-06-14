@@ -9,15 +9,15 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainPage extends AppCompatActivity {
-    private Button getstarted;
+    private Button getStarted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register);
+        setContentView(R.layout.mainpage);
 
-        getstarted = (Button)findViewById(R.id.getstarted);
-        getstarted.setOnClickListener(new View.OnClickListener() {
+        getStarted = findViewById(R.id.getStarted);
+        getStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {openRegister();
             }
