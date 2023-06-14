@@ -1,16 +1,21 @@
 package com.example.projectapplication;
 
 
+import static android.content.ContentValues.TAG;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class MyDatabase extends SQLiteOpenHelper {
@@ -228,6 +233,43 @@ public class MyDatabase extends SQLiteOpenHelper {
         db.close();
 
         return eventId;
+    }
+
+    //get event and display it in list
+    public ArrayList<Event> getAllEvents() {
+        ArrayList<Event> eventList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] columns = {
+                COLUMN_ID3,
+                COLUMN_EVENT,
+                COLUMN_ORGANIZER,
+                COLUMN_DATE,
+                COLUMN_TIME,
+                COLUMN_IMAGE
+        };
+
+        Cursor cursor = db.query(TABLE_NAME3, columns, null, null, null, null, null);
+
+        while (cursor.moveToNext()) {
+            int eventId = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID3));
+            String eventName = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EVENT));
+            String eventOrganizer = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ORGANIZER));
+            String eventDate = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE));
+            String eventTime = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME));
+            byte[] eventImageBytes = cursor.getBlob(cursor.getColumnIndexOrThrow(COLUMN_IMAGE));
+
+            Event event = new Event(eventId, eventName, eventOrganizer, eventDate, eventTime, eventImageBytes);
+            eventList.add(event);
+        }
+
+        // Close cursor and database connection
+        cursor.close();
+        db.close();
+
+        // Return the list of events
+        return eventList;
     }
 
     public Cursor searchGuestInfo(String name){
