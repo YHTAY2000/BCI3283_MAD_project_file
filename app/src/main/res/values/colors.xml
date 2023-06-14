@@ -10,5 +10,13 @@
     <color name="grey">#808080</color>
     <color name="red">#FF0000</color>
     <color name="underline">#D8D6D6</color>
+
+    <!-- Tan -->
     <color name="lavender">#8692f7</color>
+    <color name="primary">#3C0581</color>
+    <color name="secondary">#FF03DAC5</color>
+    <color name="night_mode">#6124B1</color>
+    <color name="notification">#13B2C3</color>
+    <color name="private_account">#E6A326</color>
+    <color name="security">#D95F69</color>
 </resources>
