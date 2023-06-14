@@ -28,6 +28,24 @@
             android:exported="true"/>
 
         <activity
+            android:name=".About"
+            android:exported="false" />
+        <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
+            android:name=".Setting"
+            android:exported="false" />
+        <activity
+            android:name=".HomePage"
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity
             android:name=".Edit_Details"
             android:exported="false" />
         <activity
@@ -35,7 +53,7 @@
             android:exported="false" />
         <activity
             android:name=".Event_Add"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".ConfirmPage"
             android:exported="false" />
@@ -53,26 +71,21 @@
             android:exported="false" />
         <activity
             android:name=".GuestAdd"
-            android:exported="true"
+            android:exported="false"
             android:label="Guest Information"
             android:parentActivityName=".GuestList">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-
-            </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
         <activity
             android:name=".GuestList"
             android:exported="false"
-            android:label="Guest List" />
-        <activity
+            android:label="Guest List"/>
+
+        <!--<activity
             android:name=".CaptureAct"
             android:screenOrientation="portrait"
             android:stateNotNeeded="false"
-            android:theme="@style/zxing_CaptureTheme" />
+            android:theme="@style/zxing_CaptureTheme" />-->
     </application>
 
 </manifest>
