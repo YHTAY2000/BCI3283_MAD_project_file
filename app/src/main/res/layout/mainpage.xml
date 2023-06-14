@@ -17,30 +17,40 @@
         android:textColor="#F6F2F2"
         android:textSize="34sp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="139dp"
-        tools:layout_editor_absoluteY="74dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.056" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="322dp"
         android:layout_height="117dp"
-        android:text="Complete Event Solution Provider in Asia. we have everything you need under one roof!"
+        android:text="Complete Event Solution Provider in Asia.
+        we have everything you need under one roof!"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="145dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.231" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="412dp"
         android:layout_height="222dp"
-        app:srcCompat="@drawable/yahoo"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="311dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65"
+        app:srcCompat="@drawable/yahoo" />
 
     <Button
         android:id="@+id/getStarted"
@@ -49,11 +59,11 @@
         android:backgroundTint="#00B2FF"
         android:text="Get Started"
         android:textAlignment="center"
-        app:cornerRadius="20dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="132dp"
-        tools:layout_editor_absoluteY="573dp" />
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.93" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

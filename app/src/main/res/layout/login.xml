@@ -11,10 +11,12 @@
         android:id="@+id/imageView2"
         android:layout_width="168dp"
         android:layout_height="167dp"
-        app:srcCompat="@drawable/log"
-        tools:layout_editor_absoluteX="121dp"
-        tools:layout_editor_absoluteY="68dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/login" />
 
     <EditText
         android:id="@+id/editTextEmail"
@@ -25,9 +27,12 @@
         android:inputType="textEmailAddress"
         android:text="Email"
         android:textColor="#F4F0F0"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="91dp"
-        tools:layout_editor_absoluteY="346dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.523" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -38,16 +43,24 @@
         android:inputType="textPersonName"
         android:text="Password"
         android:textColor="@color/white"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="91dp"
-        tools:layout_editor_absoluteY="435dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.665" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.93"
+         />
 
     <Button
         android:id="@+id/buttonlogin"
@@ -55,10 +68,12 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/teal_200"
         android:text="Login"
-        app:cornerRadius="20dp"
-        tools:layout_editor_absoluteX="164dp"
-        tools:layout_editor_absoluteY="541dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.825" />
 
     <TextView
         android:id="@+id/registerNow"
@@ -69,8 +84,11 @@
         android:textColor="#0B0A0A"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="75dp"
-        tools:layout_editor_absoluteY="601dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.883" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
