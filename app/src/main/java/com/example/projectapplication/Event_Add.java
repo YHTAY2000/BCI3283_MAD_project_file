@@ -34,6 +34,7 @@ public class Event_Add extends AppCompatActivity {
     private Calendar calendar;
     private MyDatabase db;
     private Uri selectedImageUri;
+    private Button backBTN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class Event_Add extends AppCompatActivity {
         date = findViewById(R.id.dateText);
         time = findViewById(R.id.timeText);
         calendar = Calendar.getInstance();
+        backBTN = findViewById(R.id.backBTN);
 
         //Initialize database helper
         db = new MyDatabase(this);
@@ -71,6 +73,13 @@ public class Event_Add extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showTimePicker();
+            }
+        });
+        backBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Event_Add.this, Event_Home.class);
+                startActivity(intent);
             }
         });
 
@@ -127,10 +136,14 @@ public class Event_Add extends AppCompatActivity {
         long eventId = db.addEvent(event_name, event_organizer, event_date, event_time, imageBytes);
         if (eventId != -1) {
             Toast.makeText(this, "Event added", Toast.LENGTH_SHORT).show();
-            finish();
+            Intent intent = new Intent(Event_Add.this, Event_Home.class);
+            intent.putExtra("newEventAdded", true);
+            startActivity(intent);
+            finish(); // Optional: If you want to finish the Event_Add activity
         } else {
             Toast.makeText(this, "Error: Failed to add event", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     private byte[] convertImageToByteArray(Uri imageUri) {

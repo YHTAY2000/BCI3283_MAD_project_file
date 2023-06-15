@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,6 +28,7 @@ public class HomePage extends AppCompatActivity {
     ImageView menu;
     LinearLayout home, profile, settings, about, logout;
     ViewPager2 viewPager2;
+    CardView eventCard, guestCard;
     //implementing auto slide facility
     private Handler slideHandler = new Handler();
 
@@ -43,6 +45,8 @@ public class HomePage extends AppCompatActivity {
         about = findViewById(R.id.about);
         logout = findViewById(R.id.logout);
         viewPager2 = findViewById(R.id.viewPager);
+        eventCard = findViewById(R.id.eventCard);
+        guestCard = findViewById(R.id.guestCard);
 
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +82,23 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(HomePage.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
+            }
+        });
+        eventCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Event list
+                Intent intent = new Intent(HomePage.this, Event_Home.class);
+                startActivity(intent);
+            }
+        });
+
+        guestCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Guest list
+                Intent intent = new Intent(HomePage.this, GuestsManagement.class);
+                startActivity(intent);
             }
         });
 
