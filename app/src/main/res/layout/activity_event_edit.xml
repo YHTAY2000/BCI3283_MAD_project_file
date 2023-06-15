@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Event_Add">
+        tools:context=".Event_Edit">
 
         <View
             android:id="@+id/view"
@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/EventTitle"
+            android:id="@+id/EditEventTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -36,40 +36,40 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/backBTN"
+            android:id="@+id/backButton"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:background="@drawable/button_back"
-            app:layout_constraintBottom_toBottomOf="@+id/EventTitle"
-            app:layout_constraintEnd_toStartOf="@+id/EventTitle"
+            app:layout_constraintBottom_toBottomOf="@+id/EditEventTitle"
+            app:layout_constraintEnd_toStartOf="@+id/EditEventTitle"
             app:layout_constraintHorizontal_bias="0.156"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.8" />
 
         <ImageView
-            android:id="@+id/eventImage"
+            android:id="@+id/editEventImage"
             android:layout_width="352dp"
             android:layout_height="216dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/party2"
+            android:src="@drawable/background_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/EventTitle"
+            app:layout_constraintTop_toBottomOf="@+id/EditEventTitle"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <Button
-            android:id="@+id/uploadButton"
+            android:id="@+id/uploadBTN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Uplaod Image"
-            app:layout_constraintEnd_toEndOf="@+id/eventImage"
-            app:layout_constraintStart_toStartOf="@+id/eventImage"
-            app:layout_constraintTop_toBottomOf="@+id/eventImage" />
+            app:layout_constraintEnd_toEndOf="@+id/editEventImage"
+            app:layout_constraintStart_toStartOf="@+id/editEventImage"
+            app:layout_constraintTop_toBottomOf="@+id/editEventImage" />
 
         <EditText
-            android:id="@+id/eventNameTxt"
+            android:id="@+id/editEventName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
@@ -77,12 +77,12 @@
             android:hint="Event Name"
             android:inputType="text"
             android:textColorHint="#000000"
-            app:layout_constraintEnd_toEndOf="@+id/eventImage"
-            app:layout_constraintStart_toStartOf="@+id/eventImage"
-            app:layout_constraintTop_toBottomOf="@+id/uploadButton" />
+            app:layout_constraintEnd_toEndOf="@+id/editEventImage"
+            app:layout_constraintStart_toStartOf="@+id/editEventImage"
+            app:layout_constraintTop_toBottomOf="@+id/uploadBTN" />
 
         <EditText
-            android:id="@+id/organizerNameTxt"
+            android:id="@+id/editOrganizerName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -90,13 +90,13 @@
             android:hint="Organizer Name"
             android:inputType="text"
             android:textColorHint="#000000"
-            app:layout_constraintEnd_toEndOf="@+id/eventNameTxt"
+            app:layout_constraintEnd_toEndOf="@+id/editEventName"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/eventNameTxt"
-            app:layout_constraintTop_toBottomOf="@+id/eventNameTxt" />
+            app:layout_constraintStart_toStartOf="@+id/editEventName"
+            app:layout_constraintTop_toBottomOf="@+id/editEventName" />
 
         <EditText
-            android:id="@+id/dateText"
+            android:id="@+id/editDateText"
             android:layout_width="170dp"
             android:layout_height="46dp"
             android:layout_marginTop="12dp"
@@ -104,11 +104,11 @@
             android:ems="10"
             android:hint="dd/mm/yy"
             android:inputType="date"
-            app:layout_constraintStart_toStartOf="@+id/organizerNameTxt"
-            app:layout_constraintTop_toBottomOf="@+id/organizerNameTxt" />
+            app:layout_constraintStart_toStartOf="@+id/editOrganizerName"
+            app:layout_constraintTop_toBottomOf="@+id/editOrganizerName" />
 
         <EditText
-            android:id="@+id/timeText"
+            android:id="@+id/editTimeText"
             android:layout_width="170dp"
             android:layout_height="44dp"
             android:layout_marginTop="12dp"
@@ -116,8 +116,8 @@
             android:ems="10"
             android:hint="00:00 am"
             android:inputType="time"
-            app:layout_constraintEnd_toEndOf="@+id/organizerNameTxt"
-            app:layout_constraintTop_toBottomOf="@+id/organizerNameTxt" />
+            app:layout_constraintEnd_toEndOf="@+id/editOrganizerName"
+            app:layout_constraintTop_toBottomOf="@+id/editOrganizerName" />
 
         <Button
             android:id="@+id/saveEventButton"
@@ -127,9 +127,9 @@
             android:backgroundTint="#3F51B5"
             android:text="SAVE"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/timeText"
-            app:layout_constraintStart_toStartOf="@+id/dateText"
-            app:layout_constraintTop_toBottomOf="@+id/timeText" />
+            app:layout_constraintEnd_toEndOf="@+id/editTimeText"
+            app:layout_constraintStart_toStartOf="@+id/editDateText"
+            app:layout_constraintTop_toBottomOf="@+id/editTimeText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
