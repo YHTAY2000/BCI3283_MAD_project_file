@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginPage extends AppCompatActivity {
-    TextInputEditText editTextEmail, editTextPassword;
+    private TextInputEditText editTextEmail, editTextPassword;
     Button buttonLogin;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
@@ -34,7 +33,7 @@ public class LoginPage extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), HomePage.class);
             startActivity(intent);
             finish();
         }
@@ -64,7 +63,7 @@ public class LoginPage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     progressBar.setVisibility(View.VISIBLE);
-                    String Email , Password, ConfirmPassword;
+                    String Email , Password;
                     Email = String.valueOf(editTextEmail.getText());
                     Password = String.valueOf(editTextPassword.getText());
 
@@ -84,7 +83,7 @@ public class LoginPage extends AppCompatActivity {
                                     progressBar.setVisibility(View.GONE);
                                     if (task.isSuccessful()) {
 
-                                        Toast.makeText(getApplicationContext(), "Login Successfull",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), "Login Successful",Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                         startActivity(intent);
                                         finish();
