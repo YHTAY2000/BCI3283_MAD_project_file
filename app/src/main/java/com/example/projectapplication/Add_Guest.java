@@ -20,6 +20,9 @@ public class Add_Guest extends AppCompatActivity {
     EditText name, gender, age, address, phoneNum;
     Button add, submit, back;
     MyDatabase db;
+    boolean isTrue;
+
+    public String event_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,18 +37,40 @@ public class Add_Guest extends AppCompatActivity {
         submit = (Button) findViewById(R.id.submit_button);
         back = (Button) findViewById(R.id.returnbackButton);
 
+        event_name = getIntent().getStringExtra("event_name");
+        isTrue = true;
+
         db = new MyDatabase(this);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Add_Guest.this, ConfirmPage.class);
-                intent.putExtra("name", name.getText().toString());
-                intent.putExtra("gender", gender.getText().toString());
-                intent.putExtra("age", age.getText().toString());
-                intent.putExtra("address", address.getText().toString());
-                intent.putExtra("phoNum", phoneNum.getText().toString());
-                startActivity(intent);
+                if (name.getText().toString().equals("") || age.getText().toString().equals("") || gender.getText().toString().equals("") || address.getText().toString().equals("")  || phoneNum.getText().toString().equals("")  ) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Add_Guest.this);
+                    builder.setTitle("Warning");
+                    builder.setMessage("Please insert the guest information");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).show();
+                    isTrue = false;
+                }else{
+                    isTrue = true;
+                }
+
+                if (isTrue) {
+                    Intent intent = new Intent(Add_Guest.this, ConfirmPage.class);
+                    intent.putExtra("name", name.getText().toString());
+                    intent.putExtra("gender", gender.getText().toString());
+                    intent.putExtra("age", age.getText().toString());
+                    intent.putExtra("address", address.getText().toString());
+                    intent.putExtra("phoNum", phoneNum.getText().toString());
+                    intent.putExtra("event_name", event_name);
+
+                    startActivity(intent);
+                }
             }
         });
 
@@ -59,9 +84,9 @@ public class Add_Guest extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(Add_Guest.this, Guest_List.class);
+                        intent.putExtra("event_name", event_name);
                         startActivity(intent);
-                        // Perform actions when the "Cancel" button is clicked
-                        // Add your desired functionality here
+
                     }
                 }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
@@ -76,9 +101,10 @@ public class Add_Guest extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 scanCode();
-
             }
         });
+
+
 
 
     }
@@ -105,7 +131,6 @@ public class Add_Guest extends AppCompatActivity {
         }else {
             while (data.moveToNext()){
 
-
                 builder.setMessage("Name\n" + data.getString(1) + "\n\n GENDER \n" + data.getString(2) + "\n\n AGE\n" + data.getString(3) + "\n\n ADDRESS \n" + data.getString(4) + "\n\nPHONE NUMBER \n" + data.getString(5) + "\n\n");
             }
         }
@@ -123,7 +148,7 @@ public class Add_Guest extends AppCompatActivity {
                     intent.putExtra("age", data.getString(3));
                     intent.putExtra("address", data.getString(4));
                     intent.putExtra("phoNum", data.getString(5));
-
+                    intent.putExtra("event_name", event_name);
                 }
                 startActivity(intent);
 

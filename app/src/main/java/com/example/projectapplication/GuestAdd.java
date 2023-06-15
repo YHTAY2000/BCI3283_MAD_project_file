@@ -42,7 +42,7 @@ public class GuestAdd extends AppCompatActivity {
         mybtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GuestAdd.this, Guest_List.class);
+                Intent intent = new Intent(GuestAdd.this, HomePage.class);
                 startActivity(intent);
             }
         });
