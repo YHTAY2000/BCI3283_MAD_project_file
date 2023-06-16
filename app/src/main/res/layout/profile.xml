@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawerLayout"
     tools:content=".Profile">
 
@@ -63,6 +64,25 @@
 
         <include
             layout="@layout/nav_drawer"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fab"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="40dp"
+            android:backgroundTint="@color/lavender"
+            app:tint="@color/white"
+            android:src="@drawable/baseline_violetedit_24">
+
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
     </RelativeLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

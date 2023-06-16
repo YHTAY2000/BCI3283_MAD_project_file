@@ -88,7 +88,7 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Event list
-                Intent intent = new Intent(HomePage.this, HomePage.class);
+                Intent intent = new Intent(HomePage.this, Event_Home.class);
                 startActivity(intent);
             }
         });
@@ -97,7 +97,7 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Guest list
-                Intent intent = new Intent(HomePage.this, HomePage.class);
+                Intent intent = new Intent(HomePage.this, Guest_List.class);
                 startActivity(intent);
             }
         });
