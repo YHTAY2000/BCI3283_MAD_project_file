@@ -1,22 +1,17 @@
 package com.example.projectapplication;
 
 
-import static android.content.ContentValues.TAG;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Bitmap;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class MyDatabase extends SQLiteOpenHelper {
 
@@ -50,8 +45,8 @@ public class MyDatabase extends SQLiteOpenHelper {
 
     private static final String event_name2 = "event_name";
 
-    //Event details Table
-    private static final String TABLE_NAME3 = "event";
+    //Event Table
+    private static final String TABLE_NAME3 = "event_list";
     private static final String COLUMN_ID3 = "event_id";
     private static final String COLUMN_EVENT = "event_name";
     private static final String COLUMN_ORGANIZER = "event_organizer";
@@ -78,13 +73,13 @@ public class MyDatabase extends SQLiteOpenHelper {
                 " ( " + COLUMN_ID2 + " INTEGER PRIMARY KEY AUTOINCREMENT, " + event_name2 + " TEXT, " +
                 COLUMN_NAME2 + " TEXT ); ";
 
-        String insertEvent = "CREATE TABLE " + TABLE_NAME3 +
-                "( " + COLUMN_ID3 + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_EVENT + " TEXT, " +
-                COLUMN_ORGANIZER + " TEXT, " +
-                COLUMN_DATE + " TEXT, " +
-                COLUMN_TIME + " TEXT," +
-                COLUMN_IMAGE + " BLOB );";
+        String CREATE_EVENT_TABLE = "CREATE TABLE " + TABLE_NAME3 + "("
+                + COLUMN_ID3 + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + COLUMN_EVENT + " TEXT,"
+                + COLUMN_ORGANIZER + " TEXT,"
+                + COLUMN_DATE + " TEXT,"
+                + COLUMN_TIME + " TEXT,"
+                + COLUMN_IMAGE + " BLOB" + ")";
 
         String query3 = "CREATE TABLE " + TABLE_NAME4 +
                 " ( " + COLUMN_ID4 + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -99,7 +94,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         db.execSQL(query);
         db.execSQL(query2);
         db.execSQL(query3);
-        db.execSQL(insertEvent);
+        db.execSQL(CREATE_EVENT_TABLE);
     }
 
     @Override
@@ -235,46 +230,32 @@ public class MyDatabase extends SQLiteOpenHelper {
         values.put(COLUMN_DATE, date);
         values.put(COLUMN_TIME, time);
         values.put(COLUMN_IMAGE, image);
-        long eventId = db.insert("event", null, values);
+        long eventId = db.insert(TABLE_NAME3, null, values);
         db.close();
 
         return eventId;
     }
 
     //get event and display it in list
-    public ArrayList<Event> getAllEvents() {
-        ArrayList<Event> eventList = new ArrayList<>();
-
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        String[] columns = {
-                COLUMN_ID3,
-                COLUMN_EVENT,
-                COLUMN_ORGANIZER,
-                COLUMN_DATE,
-                COLUMN_TIME,
-                COLUMN_IMAGE
-        };
-
-        Cursor cursor = db.query(TABLE_NAME3, columns, null, null, null, null, null);
-
-        while (cursor.moveToNext()) {
-            int eventId = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID3));
-            String eventName = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EVENT));
-            String eventOrganizer = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ORGANIZER));
-            String eventDate = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE));
-            String eventTime = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME));
-            byte[] eventImageBytes = cursor.getBlob(cursor.getColumnIndexOrThrow(COLUMN_IMAGE));
-
-            Event event = new Event(eventId, eventName, eventOrganizer, eventDate, eventTime, eventImageBytes);
-            eventList.add(event);
+    public List<Event> getAllEvents() {
+        List<Event> eventList = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " + TABLE_NAME3;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID3));
+                String eventName = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EVENT));
+                String organizer = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ORGANIZER));
+                String date = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE));
+                String time = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME));
+                byte[] image = cursor.getBlob(cursor.getColumnIndexOrThrow(COLUMN_IMAGE));
+                Event event = new Event(id, eventName, organizer, date, time, image);
+                eventList.add(event);
+            } while (cursor.moveToNext());
         }
-
-        // Close cursor and database connection
         cursor.close();
         db.close();
-
-        // Return the list of events
         return eventList;
     }
 
@@ -315,4 +296,23 @@ public class MyDatabase extends SQLiteOpenHelper {
         Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_NAME + " = ?", new String[]{name});
         return  data;
     }
+
+    public int updateEvent(Event event) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_EVENT, event.getEventName());
+        values.put(COLUMN_ORGANIZER, event.getEventOrganizer());
+        values.put(COLUMN_DATE, event.getEventDate());
+        values.put(COLUMN_TIME, event.getEventTime());
+        values.put(COLUMN_IMAGE, event.getEventImage());
+        return db.update(TABLE_NAME3, values, COLUMN_ID3 + " = ?",
+                new String[]{String.valueOf(event.getId())});
+    }
+
+    public int deleteEvent(int eventId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME3, COLUMN_ID3 + " = ?",
+                new String[]{String.valueOf(eventId)});
+    }
+
 }

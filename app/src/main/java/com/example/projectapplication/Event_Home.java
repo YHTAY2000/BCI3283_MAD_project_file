@@ -33,7 +33,7 @@ public class Event_Home extends AppCompatActivity {
 
         // Initialize event list and adapter
         eventList = new ArrayList<>();
-        eventAdapter = new EventAdapter(eventList);
+        eventAdapter = new EventAdapter(eventList, this);
 
         // Set the adapter to the RecyclerView
         eventRecyclerView.setAdapter(eventAdapter);
@@ -48,6 +48,13 @@ public class Event_Home extends AppCompatActivity {
         });
 
         // Load and display events
+        loadEvents();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Reload events when the activity is resumed
         loadEvents();
     }
 
