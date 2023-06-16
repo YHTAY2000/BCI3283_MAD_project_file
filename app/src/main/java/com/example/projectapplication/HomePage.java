@@ -142,7 +142,7 @@ public class HomePage extends AppCompatActivity {
         sliderimages.add(new SlideImage(R.drawable.banner4));
         sliderimages.add(new SlideImage(R.drawable.banner5));
 
-        viewPager2.setAdapter(new SlideAdapter(sliderimages,viewPager2));
+        //viewPager2.setAdapter(new SlideAdapter(sliderimages,viewPager2));
 
         viewPager2.setClipToPadding(false);
         viewPager2.setClipChildren(false);

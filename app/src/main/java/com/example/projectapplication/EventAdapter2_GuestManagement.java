@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.IdentityHashMap;
 import java.util.List;
 
 public class EventAdapter2_GuestManagement extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -28,6 +30,7 @@ public class EventAdapter2_GuestManagement extends RecyclerView.Adapter<Recycler
     private Context context;
     private List<getEventNameOnly> itemList1;
     private MyDatabase db;
+
 
     public EventAdapter2_GuestManagement(Context context, List<getEventNameOnly> itemList1) {
         this.context = context;
@@ -50,6 +53,9 @@ public class EventAdapter2_GuestManagement extends RecyclerView.Adapter<Recycler
             Item1ViewHolder holder = (Item1ViewHolder) viewHolder;
             getEventNameOnly item = itemList1.get(position);
             holder.textView.setText(item.getEventName());
+            holder.time.setText(" TIME : " + item.getTime());
+            holder.date.setText(" DATE : " + item.getDate());
+            holder.image.setImageBitmap(item.getImage());
             holder.item = item;
         }
     }
@@ -70,14 +76,17 @@ public class EventAdapter2_GuestManagement extends RecyclerView.Adapter<Recycler
 
     public class Item1ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textView;
+        TextView textView, time, date;
         Button view, delete;
         getEventNameOnly item;
+         ImageView image;
 
         public Item1ViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.eventNameTextView);
-
+            time = itemView.findViewById(R.id.Texttime);
+            date = itemView.findViewById(R.id.date);
+            image = itemView.findViewById(R.id.imageEvent);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

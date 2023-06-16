@@ -45,7 +45,14 @@ public class Edit_Details extends AppCompatActivity {
         address.setHint(outputaddress);
         phoneNum.setHint(outputphoneNum);
         age.setHint(outputage);
+        SessionHandler sessionManager = new SessionHandler(getApplicationContext());
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +76,7 @@ public class Edit_Details extends AppCompatActivity {
 
                 if (age.getText().toString().equals("")){
 
-                    db.edit(outputage, "address" ,outputid);
+                    db.edit(outputage, "age" ,outputid);
 
                 }else{
 
@@ -78,7 +85,7 @@ public class Edit_Details extends AppCompatActivity {
 
                 if (phoneNum.getText().toString().equals("")){
 
-                    db.edit(outputphoneNum, "address" ,outputid);
+                    db.edit(outputphoneNum, "number" ,outputid);
 
                 }else{
 
@@ -87,7 +94,7 @@ public class Edit_Details extends AppCompatActivity {
 
                 if (gender.getText().toString().equals("")){
 
-                    db.edit(outputgender, "address" ,outputid);
+                    db.edit(outputgender, "gender" ,outputid);
 
                 }else{
                     db.edit(gender.getText().toString(), "gender", outputid);
@@ -101,6 +108,8 @@ public class Edit_Details extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                         Intent intent = new Intent(Edit_Details.this, Guest_List.class);
+                        String userId = sessionManager.getEventName();
+                        intent.putExtra("event_name", userId);
                         startActivity(intent);
                     }
                 }).show();
