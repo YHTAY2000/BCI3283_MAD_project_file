@@ -28,8 +28,7 @@
         android:id="@+id/textView2"
         android:layout_width="322dp"
         android:layout_height="117dp"
-        android:text="Complete Event Solution Provider in Asia.
-        we have everything you need under one roof!"
+        android:text="Complete Event Solution Provider in Asia. We have everything you need under one roof!"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -53,7 +52,7 @@
         app:srcCompat="@drawable/yahoo" />
 
     <Button
-        android:id="@+id/getStarted"
+        android:id="@+id/guest_Login_Button"
         android:layout_width="171dp"
         android:layout_height="52dp"
         android:backgroundTint="#00B2FF"
@@ -66,7 +65,7 @@
         app:layout_constraintVertical_bias="0.87" />
 
     <Button
-        android:id="@+id/adminLogin"
+        android:id="@+id/admin_Login_Button"
         android:layout_width="171dp"
         android:layout_height="52dp"
         android:backgroundTint="@color/notification"

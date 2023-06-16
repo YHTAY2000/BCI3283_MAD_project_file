@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,11 +21,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import org.jetbrains.annotations.NonNls;
-
 public class RegisterPage extends AppCompatActivity {
-    TextInputEditText editTextEmail, editTextPassword,editTextConfirmPassword;
-            Button register;
+            EditText registerEmail, registerPassword,registerConfirmPassword;
+            Button registerButton;
             FirebaseAuth mAuth;
             ProgressBar progressBar;
             TextView textView;
@@ -45,11 +44,11 @@ public class RegisterPage extends AppCompatActivity {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.register);
                 mAuth = FirebaseAuth.getInstance();
-                        editTextEmail = findViewById(R.id.editTextEmail);
-                        editTextPassword = findViewById(R.id.editTextPassword);
-                        editTextConfirmPassword = findViewById(R.id.editTextConfirmPassword);
-                        register = findViewById(R.id.register);
-                        progressBar = findViewById(R.id.progreeBar);
+                        registerEmail = findViewById(R.id.register_Email);
+                        registerPassword = findViewById(R.id.register_Password);
+                        registerConfirmPassword = findViewById(R.id.register_Confirm_Password);
+                        registerButton = findViewById(R.id.register_Button);
+                        progressBar = findViewById(R.id.progressBar);
                         textView = findViewById(R.id.loginNow);
                         textView.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -60,14 +59,14 @@ public class RegisterPage extends AppCompatActivity {
                             }
                         });
 
-                        register.setOnClickListener(new View.OnClickListener() {
+                        registerButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 progressBar.setVisibility(View.VISIBLE);
                                 String Email , Password, ConfirmPassword;
-                                Email = String.valueOf(editTextEmail.getText());
-                                Password = String.valueOf(editTextPassword.getText());
-                                ConfirmPassword = String.valueOf(editTextConfirmPassword.getText());
+                                Email = String.valueOf(registerEmail.getText());
+                                Password = String.valueOf(registerPassword.getText());
+                                ConfirmPassword = String.valueOf(registerConfirmPassword.getText());
 
                                 if (TextUtils.isEmpty(Email)) {
                                     Toast.makeText(RegisterPage.this,"Enter email", Toast.LENGTH_SHORT).show();

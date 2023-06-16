@@ -28,11 +28,11 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.mainpage);
 
         mMainPage=findViewById(R.id.main_page);
-        getStarted=findViewById(R.id.getStarted);
-        adminLogin=findViewById(R.id.adminLogin);
+        getStarted=findViewById(R.id.guest_Login_Button);
+        adminLogin=findViewById(R.id.admin_Login_Button);
 
-        getStarted.setOnClickListener(this);
-        adminLogin.setOnClickListener(this);
+        getStarted.setOnClickListener((View.OnClickListener) this);
+        adminLogin.setOnClickListener((View.OnClickListener) this);
 
 
         BiometricManager biometricManager=BiometricManager.from(this);
@@ -71,11 +71,11 @@ public class MainPage extends AppCompatActivity {
 
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.getStarted:
+            case R.id.guest_Login_Button:
                 Toast.makeText(this, "login", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainPage.this, LoginPage.class));
                 break;
-            case R.id.adminLogin:
+            case R.id.admin_Login_Button:
                 Toast.makeText(this, "login", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainPage.this, AdminPage.class));
                 break;
