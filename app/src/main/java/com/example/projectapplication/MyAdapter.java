@@ -116,8 +116,10 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                                         dialog.dismiss();
                                     }
                                 }).show();
-                                itemList1.remove(position);
-                                notifyItemRemoved(position);
+                                if (position >= 0 && position < itemList1.size()) {
+                                    itemList1.remove(position);
+                                    notifyItemRemoved(position);
+                                }
 
                             }else{
                                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -162,7 +164,4 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     // Method to add a CheckInItem to the checkInRecycleView
-    public void deleteItem() {
-        notifyItemInserted(itemList1.size());
-    }
 }

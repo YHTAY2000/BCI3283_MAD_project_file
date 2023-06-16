@@ -57,13 +57,26 @@
         android:layout_width="171dp"
         android:layout_height="52dp"
         android:backgroundTint="#00B2FF"
-        android:text="Get Started"
+        android:text="GUEST"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.93" />
+        app:layout_constraintVertical_bias="0.87" />
+
+    <Button
+        android:id="@+id/adminLogin"
+        android:layout_width="171dp"
+        android:layout_height="52dp"
+        android:backgroundTint="@color/notification"
+        android:text="Admin"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.958" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

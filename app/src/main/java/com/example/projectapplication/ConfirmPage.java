@@ -25,6 +25,7 @@ public class ConfirmPage extends AppCompatActivity {
         String outputage = getIntent().getStringExtra("age");
         String outputaddress = getIntent().getStringExtra("address");
         String outputphoneNum = getIntent().getStringExtra("phoNum");
+        String event_name = getIntent().getStringExtra("event_name");
 
         name = (TextView) findViewById(R.id.inputName);
         gender = (TextView) findViewById(R.id.inputGender);
@@ -33,6 +34,7 @@ public class ConfirmPage extends AppCompatActivity {
         age = (TextView) findViewById(R.id.inputAge);
         confirmBtn = (Button) findViewById(R.id.confirmBtn);
         db = new MyDatabase(this);
+
 
         name.setText(outputname);
         gender.setText(outputgender);
@@ -43,7 +45,7 @@ public class ConfirmPage extends AppCompatActivity {
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean status = db.addGuestforGuestMgm(outputname, outputgender, Integer.parseInt(outputage), outputaddress, outputphoneNum);
+                boolean status = db.addGuestforGuestMgm(outputname, outputgender, Integer.parseInt(outputage), outputaddress, outputphoneNum, event_name);
                 AlertDialog.Builder builder = new AlertDialog.Builder(ConfirmPage.this);
                 builder.setTitle("Status");
 
@@ -58,6 +60,7 @@ public class ConfirmPage extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                         Intent intent = new Intent(ConfirmPage.this, Guest_List.class);
+                        intent.putExtra("event_name", event_name);
                         startActivity(intent);
                     }
                 }).show();
