@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -34,6 +35,17 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Event event = eventList.get(position);
         holder.eventNameTextView.setText(event.getEventName());
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Event_Details.class);
+                intent.putExtra("event", event); // Pass the entire Event object
+                context.startActivity(intent);
+            }
+        });
+
+
 
         // Set click listener for the edit icon
         holder.editImageView.setOnClickListener(v -> {
@@ -77,12 +89,14 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         public TextView eventNameTextView;
         public ImageView editImageView;
         public ImageView deleteImageView;
+        public CardView cardView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             eventNameTextView = itemView.findViewById(R.id.eventNameTextView);
             editImageView = itemView.findViewById(R.id.editImageView);
             deleteImageView = itemView.findViewById(R.id.deleteImageView);
+            cardView = itemView.findViewById(R.id.cardView);
         }
     }
 }

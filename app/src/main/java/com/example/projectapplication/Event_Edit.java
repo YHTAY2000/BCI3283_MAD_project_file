@@ -6,7 +6,6 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,7 +23,7 @@ public class Event_Edit extends AppCompatActivity {
 
     private ImageView editEventImage;
     private Button uploadBTN, backButton, saveButton;
-    private EditText editEventName, editOrganizerName, editdate, edittime;
+    private EditText editEventName, editOrganizerName, editDate, editTime, editLocation, editActivity;
     private static final int PICK_IMAGE_REQUEST = 1;
     private Calendar calendar;
     private Event event;
@@ -37,14 +36,15 @@ public class Event_Edit extends AppCompatActivity {
         // Initialize views
         editEventName = findViewById(R.id.editEventName);
         editOrganizerName = findViewById(R.id.editOrganizerName);
-        editdate = findViewById(R.id.editDateText);
-        edittime = findViewById(R.id.editTimeText);
+        editDate = findViewById(R.id.editDateText);
+        editTime = findViewById(R.id.editTimeText);
         editEventImage = findViewById(R.id.editEventImage);
         backButton = findViewById(R.id.backButton);
         calendar = Calendar.getInstance();
         uploadBTN = findViewById(R.id.uploadBTN);
         saveButton = findViewById(R.id.saveEventButton);
-
+        editLocation = findViewById(R.id.editLocationText);
+        editActivity= findViewById(R.id.editActivityText);
 
         Intent intent = getIntent();
         if (intent != null) {
@@ -54,8 +54,10 @@ public class Event_Edit extends AppCompatActivity {
                 editEventImage.setImageBitmap(BitmapUtils.getBitmapFromByteArray(event.getEventImage()));
                 editEventName.setText(event.getEventName());
                 editOrganizerName.setText(event.getEventOrganizer());
-                editdate.setText(event.getEventDate());
-                edittime.setText(event.getEventTime());
+                editDate.setText(event.getEventDate());
+                editTime.setText(event.getEventTime());
+                editLocation.setText(event.getEventLocation());
+                editActivity.setText(event.getEventActivity());
                 this.event = event;
             }
         }
@@ -67,14 +69,14 @@ public class Event_Edit extends AppCompatActivity {
             }
         });
 
-        editdate.setOnClickListener(new View.OnClickListener() {
+        editDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDatePicker();
             }
         });
 
-        edittime.setOnClickListener(new View.OnClickListener() {
+        editTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showTimePicker();
@@ -126,7 +128,7 @@ public class Event_Edit extends AppCompatActivity {
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         // Update the EditText field with the selected date
                         String selectedDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
-                        editdate.setText(selectedDate);
+                        editDate.setText(selectedDate);
                     }
                 }, year, month, day);
 
@@ -155,7 +157,7 @@ public class Event_Edit extends AppCompatActivity {
 
                         // Update the EditText field with the selected time
                         String selectedTime = String.format("%02d:%02d %s", hourOfDay12, minute, format);
-                        edittime.setText(selectedTime);
+                        editTime.setText(selectedTime);
                     }
                 }, hour, minute, false); // Set the last parameter to false to display in 12-hour format
         timePickerDialog.show();
@@ -165,12 +167,14 @@ public class Event_Edit extends AppCompatActivity {
         // Retrieve the updated event details from the UI components
         String eventName = editEventName.getText().toString().trim();
         String organizer = editOrganizerName.getText().toString().trim();
-        String date = editdate.getText().toString().trim();
-        String time = edittime.getText().toString().trim();
+        String date = editDate.getText().toString().trim();
+        String time = editTime.getText().toString().trim();
         Bitmap eventImage = ((BitmapDrawable) editEventImage.getDrawable()).getBitmap();
+        String location = editLocation.getText().toString().trim();
+        String activity = editActivity.getText().toString().trim();
 
         // Create an Event object with the updated details
-        Event updatedEvent = new Event(event.getId(), eventName, organizer, date, time, BitmapUtils.getByteArrayFromBitmap(eventImage));
+        Event updatedEvent = new Event(event.getId(), eventName, organizer, date, time, BitmapUtils.getByteArrayFromBitmap(eventImage), location, activity);
 
         // Update the event in the database
         MyDatabase db = new MyDatabase(this);
