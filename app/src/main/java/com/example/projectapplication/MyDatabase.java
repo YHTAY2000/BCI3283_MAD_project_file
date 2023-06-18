@@ -6,13 +6,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +53,8 @@ public class MyDatabase extends SQLiteOpenHelper {
     private static final String COLUMN_DATE = "event_date";
     private static final String COLUMN_TIME = "event_time";
     private static final String COLUMN_IMAGE = "event_image";
+    private static final String COLUMN_LOCATION = "event_location";
+    private static final String COLUMN_ACTIVITY = "event_activity";
 
     public MyDatabase(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -82,7 +81,9 @@ public class MyDatabase extends SQLiteOpenHelper {
                 + COLUMN_ORGANIZER + " TEXT,"
                 + COLUMN_DATE + " TEXT,"
                 + COLUMN_TIME + " TEXT,"
-                + COLUMN_IMAGE + " BLOB " + ")";
+                + COLUMN_IMAGE + " BLOB,"
+                + COLUMN_LOCATION + " TEXT,"
+                + COLUMN_ACTIVITY + " TEXT" + ")";
 
         String query3 = "CREATE TABLE " + TABLE_NAME4 +
                 " ( " + COLUMN_ID4 + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -167,9 +168,9 @@ public class MyDatabase extends SQLiteOpenHelper {
         return  data;
     }
 
-    public Cursor getID(String name, String event) {
+    public Cursor getID(String name) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME4 + " WHERE " + COLUMN_NAME + " = ?" + " AND " + COLUMN_EVENT_NAME4 + " = ?", new String[]{name, event});
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME4 + " WHERE " + COLUMN_NAME + " = ?", new String[]{name});
         return data;
     }
 
@@ -225,7 +226,7 @@ public class MyDatabase extends SQLiteOpenHelper {
     }
 
     //insert event
-    public long addEvent(String event, String organizer, String date, String time, byte[] image){
+    public long addEvent(String event, String organizer, String date, String time, byte[] image, String location, String activity){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_EVENT, event);
@@ -233,6 +234,8 @@ public class MyDatabase extends SQLiteOpenHelper {
         values.put(COLUMN_DATE, date);
         values.put(COLUMN_TIME, time);
         values.put(COLUMN_IMAGE, image);
+        values.put(COLUMN_LOCATION, location);
+        values.put(COLUMN_ACTIVITY, activity);
         long eventId = db.insert(TABLE_NAME3, null, values);
         db.close();
 
@@ -253,8 +256,9 @@ public class MyDatabase extends SQLiteOpenHelper {
                 String date = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE));
                 String time = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME));
                 byte[] image = cursor.getBlob(cursor.getColumnIndexOrThrow(COLUMN_IMAGE));
-
-                Event event = new Event(id, eventName, organizer, date, time, image);
+                String location = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LOCATION));
+                String activity = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ACTIVITY));
+                Event event = new Event(id, eventName, organizer, date, time, image, location, activity);
                 eventList.add(event);
             } while (cursor.moveToNext());
         }
@@ -265,18 +269,27 @@ public class MyDatabase extends SQLiteOpenHelper {
 
     public ArrayList<getEventNameOnly> getAllEvents2() {
         ArrayList<getEventNameOnly> eventList = new ArrayList<>();
+
         SQLiteDatabase db = this.getReadableDatabase();
-        String selectQuery = "SELECT * FROM " + TABLE_NAME3;
-        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        String[] columns = {
+                COLUMN_ID3,
+                COLUMN_EVENT,
+                COLUMN_ORGANIZER,
+                COLUMN_DATE,
+                COLUMN_TIME,
+                COLUMN_IMAGE,
+                COLUMN_LOCATION,
+                COLUMN_ACTIVITY
+        };
+
+        Cursor cursor = db.query(TABLE_NAME3, columns, null, null, null, null, null);
+
         while (cursor.moveToNext()) {
             int eventId = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID3));
             String eventName = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EVENT));
-            String time = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME));
-            String date = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE));
-            byte[] imageBytes = cursor.getBlob(cursor.getColumnIndexOrThrow(COLUMN_IMAGE));
-            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
 
-            getEventNameOnly event = new getEventNameOnly(eventId, eventName, time, date, bitmap);
+            getEventNameOnly event = new getEventNameOnly(eventId, eventName);
             eventList.add(event);
         }
 
@@ -302,6 +315,8 @@ public class MyDatabase extends SQLiteOpenHelper {
         values.put(COLUMN_DATE, event.getEventDate());
         values.put(COLUMN_TIME, event.getEventTime());
         values.put(COLUMN_IMAGE, event.getEventImage());
+        values.put(COLUMN_LOCATION, event.getEventLocation());
+        values.put(COLUMN_ACTIVITY, event.getEventActivity());
         return db.update(TABLE_NAME3, values, COLUMN_ID3 + " = ?",
                 new String[]{String.valueOf(event.getId())});
     }

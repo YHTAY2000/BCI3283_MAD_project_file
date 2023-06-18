@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Event_Details">
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="68dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/EventDetailsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Event Details"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/backBTN2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/button_back"
+        app:layout_constraintBottom_toBottomOf="@+id/EventDetailsTitle"
+        app:layout_constraintEnd_toStartOf="@+id/EventDetailsTitle"
+        app:layout_constraintHorizontal_bias="0.131"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/eventimage"
+        android:layout_width="411dp"
+        android:layout_height="174dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background_image" />
+
+    <TextView
+        android:id="@+id/eventname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="12dp"
+        android:text="Event Name"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eventimage" />
+
+    <TextView
+        android:id="@+id/organizername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Organizer Name"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/eventname"
+        app:layout_constraintTop_toBottomOf="@+id/eventname" />
+
+    <TextView
+        android:id="@+id/eventdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="36dp"
+        android:drawableLeft="@drawable/calender"
+        android:drawableTint="#393838"
+        android:gravity="center_vertical"
+        android:text="01/01/2023"
+        android:textColor="#090909"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.978"
+        app:layout_constraintStart_toEndOf="@+id/eventname"
+        app:layout_constraintTop_toBottomOf="@+id/eventimage" />
+
+    <TextView
+        android:id="@+id/eventtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:drawableLeft="@drawable/clock"
+        android:drawableTint="#333333"
+        android:gravity="center_vertical"
+        android:text="12:00 pm"
+        android:textColor="#090909"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/eventdate"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/eventdate"
+        app:layout_constraintTop_toBottomOf="@+id/eventdate" />
+
+    <TextView
+        android:id="@+id/locationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Location"
+        android:textColor="#131313"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/organizername"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="@+id/organizername"
+        app:layout_constraintTop_toBottomOf="@+id/organizername" />
+
+    <TextView
+        android:id="@+id/locationText2"
+        android:layout_width="332dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="4dp"
+        android:text="Pekan"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/locationTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/locationTitle"
+        app:layout_constraintTop_toBottomOf="@+id/locationTitle" />
+
+    <TextView
+        android:id="@+id/activityText2"
+        android:layout_width="332dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="4dp"
+        android:text="Eat Cake"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/activityTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/activityTitle"
+        app:layout_constraintTop_toBottomOf="@+id/activityTitle" />
+
+    <TextView
+        android:id="@+id/scheduleTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Schedule"
+        android:textColor="#131313"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/locationText2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/locationText2"
+        app:layout_constraintTop_toBottomOf="@+id/locationText2" />
+
+    <TextView
+        android:id="@+id/scheduleText"
+        android:layout_width="332dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="4dp"
+        android:text="At 2:00 pm, you may enter the event. After 30 minutes the event will starts."
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/scheduleTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/scheduleTitle"
+        app:layout_constraintTop_toBottomOf="@+id/scheduleTitle" />
+
+    <TextView
+        android:id="@+id/activityTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Activity"
+        android:textColor="#131313"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/scheduleText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/scheduleText"
+        app:layout_constraintTop_toBottomOf="@+id/scheduleText" />
+
+    <Button
+        android:id="@+id/guestListButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#2196F3"
+        android:text="Guest List"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/activityText2"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="@+id/activityText2"
+        app:layout_constraintTop_toBottomOf="@+id/activityText2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

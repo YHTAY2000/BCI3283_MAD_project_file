@@ -22,14 +22,14 @@
         android:layout_marginTop="16dp"
         android:text="New Event"
         android:textAlignment="center"
-        android:textSize="34dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.44" />
 
     <Button
         android:id="@+id/backBTN"
@@ -38,21 +38,21 @@
         android:background="@drawable/button_back"
         app:layout_constraintBottom_toBottomOf="@+id/EventTitle"
         app:layout_constraintEnd_toStartOf="@+id/EventTitle"
-        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/eventImage"
         android:layout_width="352dp"
         android:layout_height="216dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:src="@drawable/background_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EventTitle"
+        app:layout_constraintTop_toBottomOf="@+id/view"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <Button
@@ -68,12 +68,13 @@
         android:id="@+id/eventNameTxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Event Name"
         android:inputType="text"
-        android:textColorHint="#000000"
+        android:textColorHint="#878787"
         app:layout_constraintEnd_toEndOf="@+id/eventImage"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/eventImage"
         app:layout_constraintTop_toBottomOf="@+id/uploadButton" />
 
@@ -81,11 +82,11 @@
         android:id="@+id/organizerNameTxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="Organizer Name"
         android:inputType="text"
-        android:textColorHint="#000000"
+        android:textColorHint="#888888"
         app:layout_constraintEnd_toEndOf="@+id/eventNameTxt"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/eventNameTxt"
@@ -95,36 +96,67 @@
         android:id="@+id/dateText"
         android:layout_width="170dp"
         android:layout_height="46dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:drawableRight="@drawable/calender"
+        android:drawableTint="#1E1D1D"
         android:ems="10"
         android:hint="dd/mm/yy"
         android:inputType="date"
         app:layout_constraintStart_toStartOf="@+id/organizerNameTxt"
-        app:layout_constraintTop_toBottomOf="@+id/organizerNameTxt"
-        android:clickable="true" />
+        app:layout_constraintTop_toBottomOf="@+id/organizerNameTxt" />
 
     <EditText
         android:id="@+id/timeText"
         android:layout_width="170dp"
         android:layout_height="44dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:drawableRight="@drawable/clock"
+        android:drawableTint="#3C3B3B"
         android:ems="10"
         android:hint="00:00 am"
         android:inputType="time"
         app:layout_constraintEnd_toEndOf="@+id/organizerNameTxt"
-        app:layout_constraintTop_toBottomOf="@+id/organizerNameTxt"
-        android:clickable="true" />
+        app:layout_constraintTop_toBottomOf="@+id/organizerNameTxt" />
 
     <Button
         android:id="@+id/addEventBTN"
         android:layout_width="134dp"
         android:layout_height="53dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="48dp"
         android:backgroundTint="#3F51B5"
         android:text="ADD"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/activityText2"
+        app:layout_constraintStart_toStartOf="@+id/activityText2"
+        app:layout_constraintTop_toBottomOf="@+id/activityText2" />
+
+    <EditText
+        android:id="@+id/locationText2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawableTint="#201F1F"
+        android:ems="10"
+        android:hint="Location"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="@+id/timeText"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/dateText"
-        app:layout_constraintTop_toBottomOf="@+id/timeText" />
+        app:layout_constraintTop_toBottomOf="@+id/dateText" />
+
+    <EditText
+        android:id="@+id/activityText2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Activities"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/locationText2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/locationText2"
+        app:layout_constraintTop_toBottomOf="@+id/locationText2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
