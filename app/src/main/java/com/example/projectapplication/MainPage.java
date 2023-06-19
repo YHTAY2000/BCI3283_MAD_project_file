@@ -7,6 +7,7 @@ import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +20,7 @@ import java.util.concurrent.Executor;
 public class MainPage extends AppCompatActivity {
     BiometricPrompt biometricPrompt;
     BiometricPrompt.PromptInfo promptInfo;
-    Button getStarted,adminLogin;
+    Button guestLogin,adminLogin;
 
     LinearLayout mMainPage;
     @Override
@@ -28,10 +29,10 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.mainpage);
 
         mMainPage=findViewById(R.id.main_page);
-        getStarted=findViewById(R.id.guest_Login_Button);
+        guestLogin=findViewById(R.id.guest_Login_Button);
         adminLogin=findViewById(R.id.admin_Login_Button);
 
-        getStarted.setOnClickListener((View.OnClickListener) this);
+        guestLogin.setOnClickListener((View.OnClickListener) this);
         adminLogin.setOnClickListener((View.OnClickListener) this);
 
 
@@ -46,6 +47,12 @@ public class MainPage extends AppCompatActivity {
             case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
                 Toast.makeText(getApplicationContext(), "No fingerprint Assigned", Toast.LENGTH_SHORT).show();
             case BiometricManager.BIOMETRIC_SUCCESS:
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_SECURITY_UPDATE_REQUIRED:
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_UNSUPPORTED:
+                break;
+            case BiometricManager.BIOMETRIC_STATUS_UNKNOWN:
                 break;
         }
         Executor executor= ContextCompat.getMainExecutor(this);
@@ -69,6 +76,7 @@ public class MainPage extends AppCompatActivity {
         biometricPrompt.authenticate(promptInfo);
     }
 
+    @SuppressLint("NonConstantResourceId")
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.guest_Login_Button:

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -54,7 +55,7 @@ public class LoginPage extends AppCompatActivity {
         textView = findViewById(R.id.user_Login);
 
 
-        textView.setOnClickListener(new View.OnClickListener() {
+        textView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), RegisterPage.class);
@@ -63,7 +64,7 @@ public class LoginPage extends AppCompatActivity {
             }
         });
 
-            buttonLogin.setOnClickListener(new View.OnClickListener() {
+            buttonLogin.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     progressBar.setVisibility(View.VISIBLE);
