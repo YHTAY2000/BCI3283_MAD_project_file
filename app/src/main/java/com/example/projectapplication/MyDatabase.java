@@ -269,6 +269,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         return eventList;
     }
 
+    //yh
     public ArrayList<getEventNameOnly> getAllEvents2() {
         ArrayList<getEventNameOnly> eventList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
