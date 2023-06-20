@@ -29,19 +29,23 @@ public class Guest_List extends AppCompatActivity {
     MyAdapter mAdapter;
     MyAdapter2 mAdapter2;
     MyAdapter3 mAdapter3;
-    Button checkIn, add, back;
+    Button checkIn, add, back, eventname;
+
+    TextView total, total2;
     List<item> itemList1;
     List<CheckInItem> itemList2;
     List<item> itemList3;
     String name;
     RecyclerView recyclerView;
     RecyclerView checkInRecycleView;
+    SessionHandler sessionManager;
     TextView noCheckInTextView,noCheckInTextView2; // Placeholder view when no check-in data is found
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_list);
+        sessionManager = new SessionHandler(getApplicationContext());
 
         checkIn = findViewById(R.id.checkInBtn);
         add = findViewById(R.id.addBtn3);
@@ -50,6 +54,9 @@ public class Guest_List extends AppCompatActivity {
         checkInRecycleView = findViewById(R.id.checkInRecycleView);
         noCheckInTextView = findViewById(R.id.noCheckInTextView);
         noCheckInTextView2 = findViewById(R.id.noCheckInTextView2);
+        eventname = (Button) findViewById(R.id.eventName);
+        total = (TextView) findViewById(R.id.totalNumber);
+        total2 = (TextView) findViewById(R.id.totalNumber2);
 
         db = new MyDatabase(this);
         itemList1 = new ArrayList<>();
@@ -73,8 +80,15 @@ public class Guest_List extends AppCompatActivity {
         checkInRecycleView.setAdapter(mAdapter2);
 
         name = getIntent().getStringExtra("event_name");
+        sessionManager.saveSession(name);
 
+        eventname.setText("Event Name : " + name);
         loadDataFromDatabase(name);
+        int totalNum = mAdapter.getItemCount();
+        total.setText("Total : " + totalNum);
+
+        int totalNum2 = mAdapter2.getItemCount();
+        total2.setText("Total : " + totalNum2);
 
         checkIn.setOnClickListener(new View.OnClickListener() {
             @Override

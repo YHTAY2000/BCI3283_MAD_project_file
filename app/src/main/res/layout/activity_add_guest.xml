@@ -142,7 +142,7 @@
                 android:layout_height="70dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style"
-                android:text="Submit"
+                android:text="NEXT"
                 android:textAllCaps="false"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"

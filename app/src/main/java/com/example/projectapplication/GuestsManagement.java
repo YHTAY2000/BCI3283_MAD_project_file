@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -18,11 +19,13 @@ import java.util.List;
 
 public class GuestsManagement extends AppCompatActivity {
 
-    private RecyclerView eventRecyclerView;
+    private RecyclerView recyclerView;
     private EventAdapter2_GuestManagement eventAdapter;
     private List<getEventNameOnly> eventList;
     private Button back;
     MyDatabase db;
+
+    public TextView mytext;
 
 
     @Override
@@ -30,15 +33,17 @@ public class GuestsManagement extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guests_management);
 
-        RecyclerView recyclerView = findViewById(R.id.eventRecyclerView);
+        recyclerView = findViewById(R.id.eventRecyclerView);
         db = new MyDatabase(this);
         eventList = new ArrayList<>();
         eventAdapter = new EventAdapter2_GuestManagement(this, eventList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(eventAdapter);
-        loadDataFromDatabase();
         db = new MyDatabase(this);
         back = (Button) findViewById(R.id.backbutton2);
+
+        mytext = (TextView) findViewById(R.id.emptyText);
+        loadDataFromDatabase();
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,10 +59,17 @@ public class GuestsManagement extends AppCompatActivity {
 
         List<getEventNameOnly> events = db.getAllEvents2();
 
-        eventList.addAll(events);
+        if (events.isEmpty()){
+            recyclerView.setVisibility(View.GONE); // Show placeholder view
 
-        eventAdapter.notifyDataSetChanged();
+        }else {
+            eventList.addAll(events);
+            eventAdapter.notifyDataSetChanged();
 
+            recyclerView.setVisibility(View.VISIBLE); // Show placeholder view
+            mytext.setVisibility(View.GONE);
+
+        }
 
     }
 }

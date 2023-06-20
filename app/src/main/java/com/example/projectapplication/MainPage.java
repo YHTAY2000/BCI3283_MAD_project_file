@@ -7,6 +7,7 @@ import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +20,7 @@ import java.util.concurrent.Executor;
 public class MainPage extends AppCompatActivity {
     BiometricPrompt biometricPrompt;
     BiometricPrompt.PromptInfo promptInfo;
-    Button getStarted,adminLogin;
+    Button guestLogin,adminLogin;
 
     LinearLayout mMainPage;
     @Override
@@ -28,11 +29,11 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.mainpage);
 
         mMainPage=findViewById(R.id.main_page);
-        getStarted=findViewById(R.id.getStarted);
-        adminLogin=findViewById(R.id.adminLogin);
+        guestLogin=findViewById(R.id.guest_Login_Button);
+        adminLogin=findViewById(R.id.admin_Login_Button);
 
-        getStarted.setOnClickListener(this);
-        adminLogin.setOnClickListener(this);
+        guestLogin.setOnClickListener((View.OnClickListener) this);
+        adminLogin.setOnClickListener((View.OnClickListener) this);
 
 
         BiometricManager biometricManager=BiometricManager.from(this);
@@ -46,6 +47,12 @@ public class MainPage extends AppCompatActivity {
             case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
                 Toast.makeText(getApplicationContext(), "No fingerprint Assigned", Toast.LENGTH_SHORT).show();
             case BiometricManager.BIOMETRIC_SUCCESS:
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_SECURITY_UPDATE_REQUIRED:
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_UNSUPPORTED:
+                break;
+            case BiometricManager.BIOMETRIC_STATUS_UNKNOWN:
                 break;
         }
         Executor executor= ContextCompat.getMainExecutor(this);
@@ -69,13 +76,14 @@ public class MainPage extends AppCompatActivity {
         biometricPrompt.authenticate(promptInfo);
     }
 
+    @SuppressLint("NonConstantResourceId")
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.getStarted:
+            case R.id.guest_Login_Button:
                 Toast.makeText(this, "login", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainPage.this, LoginPage.class));
                 break;
-            case R.id.adminLogin:
+            case R.id.admin_Login_Button:
                 Toast.makeText(this, "login", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainPage.this, AdminPage.class));
                 break;

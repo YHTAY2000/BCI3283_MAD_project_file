@@ -20,12 +20,22 @@ public class Event_Home extends AppCompatActivity {
     private EventAdapter eventAdapter;
     private List<Event> eventList;
     private FloatingActionButton addBtn;
+    private Button backbutton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_home);
+
+        backbutton = findViewById(R.id.backBTN);
+        backbutton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(Event_Home.this, HomePage.class);
+                startActivity(intent);
+            }
+        });
 
         // Initialize RecyclerView
         eventRecyclerView = findViewById(R.id.eventRecyclerView);

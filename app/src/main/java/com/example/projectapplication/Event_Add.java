@@ -25,16 +25,12 @@ import java.io.IOException;
 public class Event_Add extends AppCompatActivity {
 
     private ImageView eventImage;
-    private Button uploadBTN;
-    private EditText eventNameText;
-    private EditText eventOrganizerText;
-    private EditText date;
-    private EditText time;
+    private Button uploadBTN, backBTN;
+    private EditText eventNameText, eventOrganizerText, date, time, location, activty;
     private static final int PICK_IMAGE_REQUEST = 1;
     private Calendar calendar;
     private MyDatabase db;
     private Uri selectedImageUri;
-    private Button backBTN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +46,8 @@ public class Event_Add extends AppCompatActivity {
         time = findViewById(R.id.timeText);
         calendar = Calendar.getInstance();
         backBTN = findViewById(R.id.backBTN);
+        location = findViewById(R.id.locationText2);
+        activty = findViewById(R.id.activityText2);
 
         //Initialize database helper
         db = new MyDatabase(this);
@@ -122,6 +120,8 @@ public class Event_Add extends AppCompatActivity {
         String event_organizer = eventOrganizerText.getText().toString().trim();
         String event_date = date.getText().toString().trim();
         String event_time = time.getText().toString().trim();
+        String event_location = location.getText().toString().trim();
+        String event_activity = activty.getText().toString().trim();
 
         // Check if an image is selected
         if (selectedImageUri == null) {
@@ -133,9 +133,9 @@ public class Event_Add extends AppCompatActivity {
         byte[] imageBytes = convertImageToByteArray(selectedImageUri);
 
         // Save the event to the database
-        long eventId = db.addEvent(event_name, event_organizer, event_date, event_time, imageBytes);
+        long eventId = db.addEvent(event_name, event_organizer, event_date, event_time, imageBytes, event_location, event_activity);
         if (eventId != -1) {
-            Toast.makeText(this, "Event added", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Event added successfully", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(Event_Add.this, Event_Home.class);
             intent.putExtra("newEventAdded", true);
             startActivity(intent);
