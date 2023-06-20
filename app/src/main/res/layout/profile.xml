@@ -11,12 +11,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:background="@color/primary"
         android:orientation="vertical"
         android:id="@+id/page">
@@ -46,15 +40,250 @@
                 android:textColor="@color/white"/>
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Profile"
-            android:layout_gravity="center"
-            android:layout_marginTop="400dp"
-            android:textColor="@color/lavender"
-            android:textSize="36sp"/>
+            android:gravity="center"
+            android:paddingTop="15dp"
+            android:orientation="vertical">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/profileImage"
+                android:src="@drawable/baseline_person_24"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/profileName"
+                android:text="Unknow"
+                android:textSize="24dp"
+                android:textColor="@color/teal_200"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white"
+                android:layout_marginTop="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/baseline_person_24"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Age"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/profileAge"
+                android:text="-"
+                android:textSize="18dp"
+                android:textColor="@color/teal_200"
+                android:layout_marginLeft="25dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:background="@color/white"
+            android:layout_marginTop="10dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/baseline_person_24"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/profileGender"
+                android:text="-"
+                android:textSize="18dp"
+                android:textColor="@color/teal_200"
+                android:layout_marginLeft="25dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:background="@color/white"
+            android:layout_marginTop="10dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/baseline_phone_24"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone No"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/profilePhone"
+                android:text="-"
+                android:textSize="18dp"
+                android:textColor="@color/teal_200"
+                android:layout_marginLeft="25dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:background="@color/white"
+            android:layout_marginTop="10dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/baseline_add_location_24"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/profileAddress"
+                android:text="-"
+                android:textSize="18dp"
+                android:textColor="@color/teal_200"
+                android:layout_marginLeft="25dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:background="@color/white"
+            android:layout_marginTop="10dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/editBtn"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_btn"
+                android:text="Edit Profile"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:drawableLeft="@drawable/baseline_whiteedit_24"
+                android:paddingLeft="10dp"
+                android:layout_marginLeft="-10dp"/>
+        </LinearLayout>
+
+
     </LinearLayout>
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/fab"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_marginStart="40dp"-->
+<!--            android:layout_marginTop="40dp"-->
+<!--            android:layout_marginEnd="40dp"-->
+<!--            android:layout_marginBottom="40dp"-->
+<!--            android:backgroundTint="@color/lavender"-->
+<!--            android:src="@drawable/baseline_violetedit_24"-->
+<!--            app:tint="@color/white">-->
+
+<!--        </com.google.android.material.floatingactionbutton.FloatingActionButton>-->
+
+<!--    </RelativeLayout>-->
 
     <RelativeLayout
         android:layout_width="300dp"
@@ -64,25 +293,6 @@
 
         <include
             layout="@layout/nav_drawer"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/fab"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_margin="40dp"
-            android:backgroundTint="@color/lavender"
-            app:tint="@color/white"
-            android:src="@drawable/baseline_violetedit_24">
-
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
     </RelativeLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

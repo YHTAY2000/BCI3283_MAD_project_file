@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -19,10 +20,13 @@ import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomePage extends AppCompatActivity {
+public class HomePage extends AppCompatActivity{
 
     DrawerLayout drawerLayout;
     ImageView menu;
@@ -31,6 +35,7 @@ public class HomePage extends AppCompatActivity {
     CardView eventCard, guestCard;
     //implementing auto slide facility
     private Handler slideHandler = new Handler();
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +108,7 @@ public class HomePage extends AppCompatActivity {
         });
 
         ImageSlider();
+
     }
 
     public static void openDrawer(DrawerLayout drawerLayout){

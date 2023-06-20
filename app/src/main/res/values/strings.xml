@@ -4,4 +4,13 @@
     <string name="already_have_and_account_log_in_android_layout_width">Already have and account ? Log in android:layout_width=</string>
     <string name="already_have_and_account_log_in" />
     <string name="don_t_have_an_account_register_now">Don\'t have an account ? Register Now</string>
+    <string name="title_activity_edit">EditActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

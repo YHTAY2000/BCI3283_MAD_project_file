@@ -3,12 +3,16 @@ package com.example.projectapplication;
 import android.graphics.Bitmap;
 
 public class ModelClass {
-    private String name, email;
+    private String name, gender, address, phone;
+    private int id,age;
     private Bitmap image;
 
-    public ModelClass(String name, String email, Bitmap image) {
+    public ModelClass(String name, String gender, String address, String phone, int age, Bitmap image) {
         this.name = name;
-        this.email = email;
+        this.gender = gender;
+        this.phone = phone;
+        this.address = address;
+        this.age = age;
         this.image = image;
     }
 
@@ -20,12 +24,36 @@ public class ModelClass {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getGender() {
+        return gender;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public Bitmap getImage() {
@@ -34,5 +62,13 @@ public class ModelClass {
 
     public void setImage(Bitmap image) {
         this.image = image;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
