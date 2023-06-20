@@ -6,9 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,17 +14,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
 public class AdminPage extends AppCompatActivity {
-    EditText loginEmail, loginPassword;
+    private TextInputEditText editTextEmail, editTextPassword;
     Button buttonLogin;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
-    TextView textView;
 
 
     @Override
@@ -35,24 +33,22 @@ public class AdminPage extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            Intent intent = new Intent(getApplicationContext(), LoginPage.class);
+            Intent intent = new Intent(getApplicationContext(), HomePage.class);
             startActivity(intent);
             finish();
         }
     }
 
-
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.adminlogin);
         mAuth = FirebaseAuth.getInstance();
-        loginEmail = findViewById(R.id.register_Email);
-        loginPassword = findViewById(R.id.user_Password1);
-        buttonLogin = findViewById(R.id.user_Button_Login1);
+        editTextEmail = findViewById(R.id.editTextEmail);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        buttonLogin = findViewById(R.id.buttonlogin);
         progressBar = findViewById(R.id.progressBar);
-        textView = findViewById(R.id.admin_Login_Button);
 
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
@@ -60,8 +56,8 @@ public class AdminPage extends AppCompatActivity {
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
                 String Email , Password;
-                Email = String.valueOf(loginEmail.getText());
-                Password = String.valueOf(loginPassword.getText());
+                Email = String.valueOf(editTextEmail.getText());
+                Password = String.valueOf(editTextPassword.getText());
 
                 if (TextUtils.isEmpty(Email)) {
                     Toast.makeText(AdminPage.this,"Enter email", Toast.LENGTH_SHORT).show();
@@ -80,7 +76,7 @@ public class AdminPage extends AppCompatActivity {
                                 if (task.isSuccessful()) {
 
                                     Toast.makeText(getApplicationContext(), "Login Successful",Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), HomePage.class);
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);
                                     finish();
                                 } else {

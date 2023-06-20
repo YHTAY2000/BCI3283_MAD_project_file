@@ -139,20 +139,25 @@ public class Add_Guest extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                Intent intent = new Intent(Add_Guest.this, ConfirmPage.class);
-
-                if (data.moveToFirst()) {
-
-                    intent.putExtra("name", data.getString(1));
-                    intent.putExtra("gender", data.getString(2));
-                    intent.putExtra("age", data.getString(3));
-                    intent.putExtra("address", data.getString(4));
-                    intent.putExtra("phoNum", data.getString(5));
+                if (data.getCount() == 0){
+                    Intent intent = new Intent(Add_Guest.this, Guest_List.class);
                     intent.putExtra("event_name", event_name);
+                    startActivity(intent);
+
+                }else {
+                    Intent intent = new Intent(Add_Guest.this, ConfirmPage.class);
+
+                    if (data.moveToFirst()) {
+
+                        intent.putExtra("name", data.getString(1));
+                        intent.putExtra("gender", data.getString(2));
+                        intent.putExtra("age", data.getString(3));
+                        intent.putExtra("address", data.getString(4));
+                        intent.putExtra("phoNum", data.getString(5));
+                        intent.putExtra("event_name", event_name);
+                    }
+                    startActivity(intent);
                 }
-                startActivity(intent);
-
-
             }
         }).show();
     });

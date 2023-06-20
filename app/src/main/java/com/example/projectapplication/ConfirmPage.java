@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class ConfirmPage extends AppCompatActivity {
     TextView name, gender, age, address, phoneNum;
-    Button confirmBtn;
+    Button confirmBtn, returnBtn;
     MyDatabase db;
 
     @Override
@@ -33,6 +33,7 @@ public class ConfirmPage extends AppCompatActivity {
         phoneNum = (TextView) findViewById(R.id.phoneNum);
         age = (TextView) findViewById(R.id.inputAge);
         confirmBtn = (Button) findViewById(R.id.confirmBtn);
+        returnBtn = (Button) findViewById(R.id.returnBack);
         db = new MyDatabase(this);
 
 
@@ -42,6 +43,12 @@ public class ConfirmPage extends AppCompatActivity {
         phoneNum.setText(outputphoneNum);
         age.setText(outputage);
 
+        returnBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

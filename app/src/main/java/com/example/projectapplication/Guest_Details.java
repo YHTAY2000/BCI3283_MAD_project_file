@@ -43,7 +43,7 @@ public class Guest_Details extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Guest_Details.this, Guest_List.class);
+                onBackPressed();
             }
         });
 
@@ -69,5 +69,10 @@ public class Guest_Details extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void onBackPressed() {
+        // Call finish() to close the current activity and return to the previous page
+        finish();
     }
 }

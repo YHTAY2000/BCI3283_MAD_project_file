@@ -28,12 +28,16 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private List<item> itemList1;
     private MyDatabase db;
+    SessionHandler sessionManager;
 
     public MyAdapter(Context context, List<item> itemList1) {
         this.context = context;
         this.itemList1 = itemList1;
         db = new MyDatabase(context);
+        sessionManager = new SessionHandler(context);
     }
+
+
 
     @NonNull
     @Override
@@ -42,6 +46,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             View view = inflater.inflate(R.layout.view_guest_list, parent, false);
             return new Item1ViewHolder(view);
+
     }
 
     @Override
@@ -89,7 +94,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             itemView.findViewById(R.id.deleteBtn).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Cursor cursor = db.getID(item.getName());
+                    String name = sessionManager.getEventName();
+                    Cursor cursor = db.getID(item.getName(), name);
                     if (cursor.getCount() == 0) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(context);
                         builder.setTitle("Status");
@@ -141,7 +147,9 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             itemView.findViewById(R.id.viewBtn).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Cursor cursor = db.getID(item.getName());
+                    String name = sessionManager.getEventName();
+
+                    Cursor cursor = db.getID(item.getName(), name);
                     if (cursor.getCount() == 0) {
 
                     } else {
@@ -151,9 +159,9 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                             intent.putExtra("id",  id2);
                             intent.putExtra("name", cursor.getString(1));
                             intent.putExtra("gender", cursor.getString(2));
-                            intent.putExtra("age", cursor.getString(3));
+                            intent.putExtra("age", cursor.getString(4));
                             intent.putExtra("address", cursor.getString(5));
-                            intent.putExtra("phoNum", cursor.getString(4));
+                            intent.putExtra("phoNum", cursor.getString(6));
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             view.getContext().startActivity(intent);
                         }

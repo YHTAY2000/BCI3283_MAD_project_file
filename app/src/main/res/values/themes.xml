@@ -35,5 +35,19 @@
         <item name="android:colorForeground">#99FFFFFF</item>
     </style>
 
+    <style name="roundImage">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="Theme.ProjectApplication.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.ProjectApplication.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.ProjectApplication.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 
 </resources>
