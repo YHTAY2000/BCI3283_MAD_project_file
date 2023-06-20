@@ -92,7 +92,7 @@ public class HomePage extends AppCompatActivity{
         eventCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Event list
+                //Event list
                 Intent intent = new Intent(HomePage.this, Event_Home.class);
                 startActivity(intent);
             }
@@ -101,7 +101,7 @@ public class HomePage extends AppCompatActivity{
         guestCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Guest list
+                //Guest list
                 Intent intent = new Intent(HomePage.this, Guest_List.class);
                 startActivity(intent);
             }
