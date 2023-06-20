@@ -92,7 +92,7 @@ public class HomePage extends AppCompatActivity{
         eventCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Event list
+                Event list
                 Intent intent = new Intent(HomePage.this, Event_Home.class);
                 startActivity(intent);
             }
@@ -101,7 +101,7 @@ public class HomePage extends AppCompatActivity{
         guestCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Guest list
+                Guest list
                 Intent intent = new Intent(HomePage.this, Guest_List.class);
                 startActivity(intent);
             }
@@ -148,7 +148,7 @@ public class HomePage extends AppCompatActivity{
         sliderimages.add(new SlideImage(R.drawable.banner4));
         sliderimages.add(new SlideImage(R.drawable.banner5));
 
-        //viewPager2.setAdapter(new SlideAdapter(sliderimages,viewPager2));
+        viewPager2.setAdapter(new SlideAdapter(sliderimages,viewPager2));
 
         viewPager2.setClipToPadding(false);
         viewPager2.setClipChildren(false);
