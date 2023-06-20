@@ -60,11 +60,12 @@ public class MyDatabase extends SQLiteOpenHelper {
     private byte[] byteImage;
 
     private static String createTableQuery = "Create table ProfileUser(id INTEGER PRIMARY KEY AUTOINCREMENT" +
-            ", name TEXT" +
-            ", age INTEGER" +
-            ", gender TEXT" +
-            ", phone TEXT" +
-            ", address TEXT)";
+            ",name TEXT" +
+            ",age INTEGER" +
+            ",gender TEXT" +
+            ",phone TEXT" +
+            ",address TEXT" +
+            ",image BLOB)";
 
     public MyDatabase(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
