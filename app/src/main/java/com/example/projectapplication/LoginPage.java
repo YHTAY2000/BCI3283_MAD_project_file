@@ -55,7 +55,7 @@ public class LoginPage extends AppCompatActivity {
         textView = findViewById(R.id.user_Login);
 
 
-        textView.setOnClickListener(new OnClickListener() {
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), RegisterPage.class);
