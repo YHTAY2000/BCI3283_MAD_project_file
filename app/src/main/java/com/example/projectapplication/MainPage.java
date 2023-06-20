@@ -90,7 +90,7 @@ public class MainPage extends AppCompatActivity {
         biometricPrompt.authenticate(promptInfo);
     }
 
-    @SuppressLint("NonConstantResourceId")
+
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.guest_Login_Button:
