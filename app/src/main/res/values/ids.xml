@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="user_Email" type="id" />
+    <item name="register_Confirm_Password" type="id" />
+    <item name="register_Button" type="id" />
+</resources>
