@@ -22,18 +22,39 @@ public class MainPage extends AppCompatActivity {
     BiometricPrompt.PromptInfo promptInfo;
     Button guestLogin,adminLogin;
 
+    LinearLayout mainPage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainpage);
 
-
+        mainPage=findViewById(R.id.main_page);
         guestLogin=findViewById(R.id.guest_Login_Button);
         adminLogin=findViewById(R.id.admin_Login_Button);
 
-        guestLogin.setOnClickListener((View.OnClickListener) this);
-        adminLogin.setOnClickListener((View.OnClickListener) this);
+        guestLogin.setOnClickListener(new View.OnClickListener() {
+
+        public void onClick(View view) {
+            Intent intent = new Intent(getApplicationContext(), AdminPage.class);
+            startActivity(intent);
+            finish();
+        }
+    });
+
+
+
+        adminLogin.setOnClickListener(new View.OnClickListener() {
+
+    public void onClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), LoginPage.class);
+        startActivity(intent);
+        finish();
+    }
+});
+
+
 
 
         BiometricManager biometricManager=BiometricManager.from(this);
