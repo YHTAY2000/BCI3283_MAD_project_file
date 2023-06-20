@@ -53,7 +53,7 @@
         app:srcCompat="@drawable/yahoo" />
 
     <Button
-        android:id="@+id/getStarted"
+        android:id="@+id/guest_Login_Button"
         android:layout_width="171dp"
         android:layout_height="52dp"
         android:backgroundTint="#00B2FF"
@@ -66,7 +66,7 @@
         app:layout_constraintVertical_bias="0.87" />
 
     <Button
-        android:id="@+id/adminLogin"
+        android:id="@+id/admin_Login_Button"
         android:layout_width="171dp"
         android:layout_height="52dp"
         android:backgroundTint="@color/notification"

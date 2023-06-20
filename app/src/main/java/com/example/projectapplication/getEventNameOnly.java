@@ -7,9 +7,9 @@ import java.sql.Blob;
 public class getEventNameOnly {
     private String eventName, time, date;
     int id;
-    Bitmap image;
+    byte[] image;
 
-    public getEventNameOnly(int event_id, String eventName, String time, String date, Bitmap image) {
+    public getEventNameOnly(int event_id, String eventName, String time, String date, byte[] image) {
         this.eventName = eventName;
         this.time = time;
         this.date = date;
@@ -26,7 +26,7 @@ public class getEventNameOnly {
     public String getDate() {
         return date;
     }
-    public Bitmap getImage() {
+    public byte[] getImage() {
         return image;
     }
     public int  getID() {

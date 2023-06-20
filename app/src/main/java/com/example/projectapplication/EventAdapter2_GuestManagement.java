@@ -55,7 +55,7 @@ public class EventAdapter2_GuestManagement extends RecyclerView.Adapter<Recycler
             holder.textView.setText(item.getEventName());
             holder.time.setText(" TIME : " + item.getTime());
             holder.date.setText(" DATE : " + item.getDate());
-            holder.image.setImageBitmap(item.getImage());
+            holder.image.setImageBitmap(BitmapUtils.getBitmapFromByteArray(item.getImage()));
             holder.item = item;
         }
     }
