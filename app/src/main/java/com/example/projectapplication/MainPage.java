@@ -63,7 +63,7 @@ public class MainPage extends AppCompatActivity {
             }
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
-                mMainPage.setVisibility(View.VISIBLE);
+                mainPage.setVisibility(View.VISIBLE);
             }
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
