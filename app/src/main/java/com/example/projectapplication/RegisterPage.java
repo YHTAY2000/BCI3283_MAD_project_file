@@ -44,11 +44,11 @@ public class RegisterPage extends AppCompatActivity {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.register);
                 mAuth = FirebaseAuth.getInstance();
-                        registerEmail = findViewById(R.id.register_Email);
-                        registerPassword = findViewById(R.id.register_Password);
-                        registerConfirmPassword = findViewById(R.id.register_Confirm_Password);
-                        registerButton = findViewById(R.id.register_Button);
-                        progressBar = findViewById(R.id.progressBar);
+                        registerEmail = findViewById(R.id.edit_Text_Email);
+                        registerPassword = findViewById(R.id.edit_Text_Password);
+                        registerConfirmPassword = findViewById(R.id.editTextConfirmPassword);
+                        registerButton = findViewById(R.id.register);
+                        progressBar = findViewById(R.id.progreeBar);
                         textView = findViewById(R.id.loginNow);
                         textView.setOnClickListener(new View.OnClickListener() {
                             @Override

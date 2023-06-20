@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -55,7 +56,7 @@ public class MyDatabase extends SQLiteOpenHelper {
     private static final String COLUMN_DATE = "event_date";
     private static final String COLUMN_TIME = "event_time";
     private static final String COLUMN_IMAGE = "event_image";
-    private static final String COLUMN_LOCATION = "event_location";
+    private static final String COLUMN_LOCATION3 = "event_location";
     private static final String COLUMN_ACTIVITY = "event_activity";
 
     private ByteArrayOutputStream byteArrayOutputStream;
@@ -95,8 +96,8 @@ public class MyDatabase extends SQLiteOpenHelper {
                 + COLUMN_DATE + " TEXT,"
                 + COLUMN_TIME + " TEXT,"
                 + COLUMN_IMAGE + " BLOB,"
-                + COLUMN_LOCATION + "TEXT,"
-                + COLUMN_ACTIVITY + "TEXT );";
+                + COLUMN_LOCATION3 + " TEXT,"
+                + COLUMN_ACTIVITY + " TEXT );";
 
         String query3 = "CREATE TABLE " + TABLE_NAME4 +
                 " ( " + COLUMN_ID4 + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -161,6 +162,40 @@ public class MyDatabase extends SQLiteOpenHelper {
         }
     }
 
+    public Cursor searchMyName(String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME4 + " WHERE " + COLUMN_NAME4 + " = ?", new String[]{name});
+        return  data;
+    }
+
+    public ArrayList<displayMyEvent> searchMyEvent(String name){
+        ArrayList<displayMyEvent> eventList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME3 + " WHERE " + COLUMN_EVENT + " = ?", new String[]{name});
+        while (cursor.moveToNext()) {
+            int eventId = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID3));
+            String eventName = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EVENT));
+            String time = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME));
+            String date = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE));
+            String organizer = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ORGANIZER));
+            String location = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LOCATION3));
+            String description = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ACTIVITY));
+            byte[] imageBytes = cursor.getBlob(cursor.getColumnIndexOrThrow(COLUMN_IMAGE));
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+
+            displayMyEvent event = new displayMyEvent(eventId, eventName, time, date, bitmap, organizer, location,description);
+            eventList.add(event);
+        }
+
+        // Close cursor and database connection
+        cursor.close();
+        db.close();
+
+        // Return the list of events
+        return eventList;
+    }
+
+
     public boolean addGuestCheckIn(String name, String myname){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -182,12 +217,11 @@ public class MyDatabase extends SQLiteOpenHelper {
         return  data;
     }
 
-    public Cursor getID(String name) {
+    public Cursor getID(String name, String event) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME4 + " WHERE " + COLUMN_NAME + " = ?", new String[]{name});
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME4 + " WHERE " + COLUMN_NAME + " = ?" + " AND " + COLUMN_EVENT_NAME4 + " = ?", new String[]{name, event});
         return data;
     }
-
 
     public Cursor getCheckInList(String myname2){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -248,7 +282,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         values.put(COLUMN_DATE, date);
         values.put(COLUMN_TIME, time);
         values.put(COLUMN_IMAGE, image);
-        values.put(COLUMN_LOCATION, loaction);
+        values.put(COLUMN_LOCATION3, loaction);
         values.put(COLUMN_ACTIVITY, activity);
         long eventId = db.insert(TABLE_NAME3, null, values);
         db.close();
@@ -270,7 +304,7 @@ public class MyDatabase extends SQLiteOpenHelper {
                 String date = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE));
                 String time = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME));
                 byte[] image = cursor.getBlob(cursor.getColumnIndexOrThrow(COLUMN_IMAGE));
-                String location = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LOCATION));
+                String location = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LOCATION3));
                 String activity = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ACTIVITY));
                 Event event = new Event(id, eventName, organizer, date, time, image, location, activity);
                 eventList.add(event);
@@ -329,7 +363,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         values.put(COLUMN_DATE, event.getEventDate());
         values.put(COLUMN_TIME, event.getEventTime());
         values.put(COLUMN_IMAGE, event.getEventImage());
-        values.put(COLUMN_LOCATION, event.getEventLocation());
+        values.put(COLUMN_LOCATION3, event.getEventLocation());
         values.put(COLUMN_ACTIVITY, event.getEventActivity());
         return db.update(TABLE_NAME3, values, COLUMN_ID3 + " = ?",
                 new String[]{String.valueOf(event.getId())});
@@ -374,7 +408,7 @@ public class MyDatabase extends SQLiteOpenHelper {
 
     public void updateUser(ModelClass modelClass){
         SQLiteDatabase db = this.getWritableDatabase();
-        
+
         ContentValues values = new ContentValues();
         values.put("name", modelClass.getName());
         values.put("age", modelClass.getAge());

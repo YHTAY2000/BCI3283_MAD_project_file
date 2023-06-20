@@ -30,14 +30,14 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainpage);
 
-        mainPage=findViewById(R.id.main_page);
+        //mainPage=findViewById(R.id.main_page);
         guestLogin=findViewById(R.id.guest_Login_Button);
         adminLogin=findViewById(R.id.admin_Login_Button);
 
         guestLogin.setOnClickListener(new View.OnClickListener() {
 
         public void onClick(View view) {
-            Intent intent = new Intent(getApplicationContext(), HomePage.class);
+            Intent intent = new Intent(getApplicationContext(), RegisterPage.class);
             startActivity(intent);
             finish();
         }
@@ -46,12 +46,12 @@ public class MainPage extends AppCompatActivity {
 
         adminLogin.setOnClickListener(new View.OnClickListener() {
 
-    public void onClick(View view) {
-        Intent intent = new Intent(getApplicationContext(), AdminPage.class);
-        startActivity(intent);
-        finish();
-    }
-});
+        public void onClick(View view) {
+            Intent intent = new Intent(getApplicationContext(), AdminPage.class);
+            startActivity(intent);
+            finish();
+        }
+    });
 
 
         BiometricManager biometricManager=BiometricManager.from(this);

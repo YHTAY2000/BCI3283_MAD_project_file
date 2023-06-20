@@ -39,7 +39,7 @@ public class Guest_List extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView checkInRecycleView;
     SessionHandler sessionManager;
-    TextView noCheckInTextView,noCheckInTextView2; // Placeholder view when no check-in data is found
+    TextView noCheckInTextView, noCheckInTextView2; // Placeholder view when no check-in data is found
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -149,23 +149,38 @@ public class Guest_List extends AppCompatActivity {
     }
 
     ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result -> {
-        boolean status = db.addGuestCheckIn(result.getContents(), name);
         AlertDialog.Builder builder = new AlertDialog.Builder(Guest_List.this);
         builder.setTitle("Status");
 
-        if (status) {
-            builder.setMessage("Successful Added");
-            // Refresh the check-in list
-            mAdapter2.addItem(new CheckInItem(result.getContents()));
-        } else {
-            builder.setMessage("Something Went Wrong!");
-        }
+        if (result != null) {
+            String contents = result.getContents();
+            if (contents != null && !contents.isEmpty()) {
+                boolean status = db.addGuestCheckIn(contents, name);
 
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
+                if (status) {
+                    builder.setMessage("Successful Added");
+                    // Refresh the check-in list
+                    mAdapter2.addItem(new CheckInItem(contents));
+                } else {
+                    builder.setMessage("Something Went Wrong!");
+                }
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).show();
+            } else {
+                // Handle the case when no QR code was scanned
+                builder.setMessage("Scan Cancelled");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).show();
             }
-        }).show();
+        }
     });
 }
