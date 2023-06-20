@@ -6,10 +6,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +56,16 @@ public class MyDatabase extends SQLiteOpenHelper {
     private static final String COLUMN_TIME = "event_time";
     private static final String COLUMN_IMAGE = "event_image";
 
+    private ByteArrayOutputStream byteArrayOutputStream;
+    private byte[] byteImage;
+
+    private static String createTableQuery = "Create table ProfileUser(id INTEGER PRIMARY KEY AUTOINCREMENT" +
+            ", name TEXT" +
+            ", age INTEGER" +
+            ", gender TEXT" +
+            ", phone TEXT" +
+            ", address TEXT)";
+
     public MyDatabase(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context.getApplicationContext();
@@ -95,6 +107,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         db.execSQL(query2);
         db.execSQL(query3);
         db.execSQL(CREATE_EVENT_TABLE);
+        db.execSQL(createTableQuery);
     }
 
     @Override
@@ -313,6 +326,52 @@ public class MyDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_NAME3, COLUMN_ID3 + " = ?",
                 new String[]{String.valueOf(eventId)});
+    }
+
+    public void storeData(ModelClass modelClass){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Bitmap bitmapImage = modelClass.getImage();
+
+        byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmapImage.compress(Bitmap.CompressFormat.JPEG,100, byteArrayOutputStream);
+        byteImage = byteArrayOutputStream.toByteArray();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name", modelClass.getName());
+        contentValues.put("age", modelClass.getAge());
+        contentValues.put("gender", modelClass.getGender());
+        contentValues.put("phone", modelClass.getPhone());
+        contentValues.put("address", modelClass.getAddress());
+        contentValues.put("image", byteImage);
+
+        long checkQuery = db.insert("ProfileUser", null, contentValues);
+        if (checkQuery != -1){
+            Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show();
+            db.close();
+        } else {
+            Toast.makeText(context, "Something went Wrong", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public Cursor getUser(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select * from ProfileUser", null);
+        return cursor;
+    }
+
+    public void updateUser(ModelClass modelClass){
+        SQLiteDatabase db = this.getWritableDatabase();
+        
+        ContentValues values = new ContentValues();
+        values.put("name", modelClass.getName());
+        values.put("age", modelClass.getAge());
+        values.put("gender", modelClass.getGender());
+        values.put("phone", modelClass.getPhone());
+        values.put("address", modelClass.getAddress());
+        values.put("image", byteImage);
+
+        db.update("ProfileUSer", values, "id" + " = " + 1, null);
+
     }
 
 }
