@@ -6,6 +6,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -269,27 +271,18 @@ public class MyDatabase extends SQLiteOpenHelper {
 
     public ArrayList<getEventNameOnly> getAllEvents2() {
         ArrayList<getEventNameOnly> eventList = new ArrayList<>();
-
         SQLiteDatabase db = this.getReadableDatabase();
-
-        String[] columns = {
-                COLUMN_ID3,
-                COLUMN_EVENT,
-                COLUMN_ORGANIZER,
-                COLUMN_DATE,
-                COLUMN_TIME,
-                COLUMN_IMAGE,
-                COLUMN_LOCATION,
-                COLUMN_ACTIVITY
-        };
-
-        Cursor cursor = db.query(TABLE_NAME3, columns, null, null, null, null, null);
-
+        String selectQuery = "SELECT * FROM " + TABLE_NAME3;
+        Cursor cursor = db.rawQuery(selectQuery, null);
         while (cursor.moveToNext()) {
             int eventId = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID3));
             String eventName = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EVENT));
+            String time = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME));
+            String date = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE));
+            byte[] imageBytes = cursor.getBlob(cursor.getColumnIndexOrThrow(COLUMN_IMAGE));
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
 
-            getEventNameOnly event = new getEventNameOnly(eventId, eventName);
+            getEventNameOnly event = new getEventNameOnly(eventId, eventName, time, date, bitmap);
             eventList.add(event);
         }
 
