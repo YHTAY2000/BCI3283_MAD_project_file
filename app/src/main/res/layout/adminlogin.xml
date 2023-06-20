@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/login" />
 
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/edit_Text_Email"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.527"
@@ -37,7 +37,7 @@
         />
 
     <EditText
-        android:id="@+id/editTextPassword"
+        android:id="@+id/edit_Text_Password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.512"

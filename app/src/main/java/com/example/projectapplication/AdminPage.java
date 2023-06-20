@@ -45,8 +45,8 @@ public class AdminPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.adminlogin);
         mAuth = FirebaseAuth.getInstance();
-        editTextEmail = findViewById(R.id.editTextEmail);
-        editTextPassword = findViewById(R.id.editTextPassword);
+        editTextEmail = findViewById(R.id.edit_Text_Email);
+        editTextPassword = findViewById(R.id.edit_Text_Password);
         buttonLogin = findViewById(R.id.buttonlogin);
         progressBar = findViewById(R.id.progressBar);
 

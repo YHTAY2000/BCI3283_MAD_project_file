@@ -48,13 +48,11 @@ public class MainPage extends AppCompatActivity {
         adminLogin.setOnClickListener(new View.OnClickListener() {
 
     public void onClick(View view) {
-        Intent intent = new Intent(getApplicationContext(), LoginPage.class);
+        Intent intent = new Intent(getApplicationContext(), RegisterPage.class);
         startActivity(intent);
         finish();
     }
 });
-
-
 
 
         BiometricManager biometricManager=BiometricManager.from(this);
