@@ -37,18 +37,17 @@ public class MainPage extends AppCompatActivity {
         guestLogin.setOnClickListener(new View.OnClickListener() {
 
         public void onClick(View view) {
-            Intent intent = new Intent(getApplicationContext(), AdminPage.class);
+            Intent intent = new Intent(getApplicationContext(), HomePage.class);
             startActivity(intent);
             finish();
         }
     });
 
 
-
         adminLogin.setOnClickListener(new View.OnClickListener() {
 
     public void onClick(View view) {
-        Intent intent = new Intent(getApplicationContext(), RegisterPage.class);
+        Intent intent = new Intent(getApplicationContext(), AdminPage.class);
         startActivity(intent);
         finish();
     }
