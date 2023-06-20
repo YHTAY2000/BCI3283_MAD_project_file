@@ -22,13 +22,13 @@ public class MainPage extends AppCompatActivity {
     BiometricPrompt.PromptInfo promptInfo;
     Button guestLogin,adminLogin;
 
-    LinearLayout mMainPage;
+    LinearLayout mainPage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainpage);
 
-        mMainPage=findViewById(R.id.main_page);
+        mainPage=findViewById(R.id.main_page);
         guestLogin=findViewById(R.id.guest_Login_Button);
         adminLogin=findViewById(R.id.admin_Login_Button);
 
