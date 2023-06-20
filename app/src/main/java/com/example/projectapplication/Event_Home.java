@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+
 
 public class Event_Home extends AppCompatActivity {
 
@@ -21,12 +27,16 @@ public class Event_Home extends AppCompatActivity {
     private List<Event> eventList;
     private FloatingActionButton addBtn;
     private Button backbutton;
+    private SensorManager sensorManager;
+    private Sensor gyroscopeSensor;
+    private SensorEventListener gyroscopeListener;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_home);
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
         backbutton = findViewById(R.id.backBTN);
         backbutton.setOnClickListener(new View.OnClickListener(){
@@ -59,6 +69,25 @@ public class Event_Home extends AppCompatActivity {
 
         // Load and display events
         loadEvents();
+
+        gyroscopeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+        gyroscopeListener = new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent event) {
+                // Handle gyroscope sensor data here
+                float x = event.values[0];  // Rotation around x-axis
+                float y = event.values[1];  // Rotation around y-axis
+                float z = event.values[2];  // Rotation around z-axis
+
+                // Add your custom logic based on gyroscope data
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+                // Handle gyroscope accuracy changes if needed
+            }
+        };
+
     }
 
     @Override
@@ -66,6 +95,13 @@ public class Event_Home extends AppCompatActivity {
         super.onResume();
         // Reload events when the activity is resumed
         loadEvents();
+        sensorManager.registerListener(gyroscopeListener, gyroscopeSensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(gyroscopeListener);
     }
 
     private void loadEvents() {

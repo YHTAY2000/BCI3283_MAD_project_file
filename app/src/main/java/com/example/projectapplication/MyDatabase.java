@@ -182,9 +182,9 @@ public class MyDatabase extends SQLiteOpenHelper {
         return  data;
     }
 
-    public Cursor getID(String name) {
+    public Cursor getID(String name, String event) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME4 + " WHERE " + COLUMN_NAME + " = ?", new String[]{name});
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME4 + " WHERE " + COLUMN_NAME + " = ?" + " AND " + COLUMN_EVENT_NAME4 + " = ?", new String[]{name, event});
         return data;
     }
 
