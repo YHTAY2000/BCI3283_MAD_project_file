@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Setting extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
@@ -65,6 +67,7 @@ public class Setting extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(Setting.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
+                FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(Setting.this, MainPage.class);
                 startActivity(intent);
             }

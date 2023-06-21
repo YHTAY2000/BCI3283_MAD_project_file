@@ -22,6 +22,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,6 +88,7 @@ public class HomePage extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Toast.makeText(HomePage.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
+                FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(HomePage.this, MainPage.class);
                 startActivity(intent);
             }
