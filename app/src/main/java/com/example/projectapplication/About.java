@@ -65,6 +65,8 @@ public class About extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(About.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(About.this, MainPage.class);
+                startActivity(intent);
             }
         });
     }

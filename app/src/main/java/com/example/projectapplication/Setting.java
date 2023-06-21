@@ -65,6 +65,8 @@ public class Setting extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(Setting.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Setting.this, MainPage.class);
+                startActivity(intent);
             }
         });
     }

@@ -79,6 +79,8 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(Profile.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Profile.this, MainPage.class);
+                startActivity(intent);
             }
         });
 

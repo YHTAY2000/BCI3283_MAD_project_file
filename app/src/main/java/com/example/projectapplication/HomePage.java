@@ -87,7 +87,10 @@ public class HomePage extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Toast.makeText(HomePage.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(HomePage.this, MainPage.class);
+                startActivity(intent);
             }
+
         });
         eventCard.setOnClickListener(new View.OnClickListener() {
             @Override
