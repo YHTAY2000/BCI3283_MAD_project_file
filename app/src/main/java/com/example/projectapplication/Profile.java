@@ -19,10 +19,16 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
+
 public class Profile extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
-    ImageView menu, profileImg;
+    ImageView menu, profileImg, iv_qr;
     LinearLayout home, profile, settings, about, logout;
     Button editBtn;
     TextView profileName, profileAge, profileGender, profilePhone, profileAddress;
@@ -39,6 +45,7 @@ public class Profile extends AppCompatActivity {
         about = findViewById(R.id.about);
         logout = findViewById(R.id.logout);
 
+
         profileImg = findViewById(R.id.profileImage);
         profileName = findViewById(R.id.profileName);
         profileAge = findViewById(R.id.profileAge);
@@ -46,6 +53,8 @@ public class Profile extends AppCompatActivity {
         profilePhone = findViewById(R.id.profilePhone);
         profileAddress = findViewById(R.id.profileAddress);
         editBtn = findViewById(R.id.editBtn);
+        iv_qr = findViewById(R.id.iv_qr);
+
 
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +96,7 @@ public class Profile extends AppCompatActivity {
             }
         });
 
+
 //        editBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -117,6 +127,8 @@ public class Profile extends AppCompatActivity {
                 profileAddress.setText(""+cursor.getString(5));
                 byte[] imageByte = cursor.getBlob(6);
 
+                generateQR(cursor.getString(1));
+
                 Bitmap bitmap = BitmapFactory.decodeByteArray(imageByte,0,imageByte.length);
                 profileImg.setImageBitmap(bitmap);
                 editBtn.setText("Edit Profile");
@@ -128,6 +140,23 @@ public class Profile extends AppCompatActivity {
                     }
                 });
             }
+        }
+    }
+
+    //generate QR code used for guest list module
+    private void generateQR(String name){
+
+        MultiFormatWriter writer = new MultiFormatWriter();
+        try {
+            BitMatrix matrix = writer.encode(name, BarcodeFormat.QR_CODE, 200, 200);
+            BarcodeEncoder encoder = new BarcodeEncoder();
+            Bitmap bitmap = encoder.createBitmap(matrix);
+            iv_qr.setImageBitmap(bitmap);
+
+        } catch (WriterException e) {
+
+            throw new RuntimeException(e);
+
         }
     }
 

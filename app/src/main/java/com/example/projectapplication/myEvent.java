@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class myEvent extends AppCompatActivity {
     MyDatabase db;
     ImageView menu;
     DrawerLayout drawerLayout;
+    LinearLayout home, profile, settings, about, logout;
 
 
     public TextView mytext;
@@ -37,6 +39,13 @@ public class myEvent extends AppCompatActivity {
         setContentView(R.layout.activity_my_event);
 
         drawerLayout = findViewById(R.id.drawerLayout);
+        menu = findViewById(R.id.menu);
+        home = findViewById(R.id.home);
+        profile = findViewById(R.id.profile);
+
+
+
+
         recyclerView = findViewById(R.id.myeventRecyclerView);
         db = new MyDatabase(this);
         eventList = new ArrayList<>();
@@ -70,26 +79,27 @@ public class myEvent extends AppCompatActivity {
         eventList.clear();
         Cursor eventname = db.searchMyName("TAY");
         if (eventname != null && eventname.moveToFirst()) {
+            do {
+                String eventName = eventname.getString(3);
+                List<displayMyEvent> events = db.searchMyEvent(eventName);
 
-            String eventName = eventname.getString(3);
-            List<displayMyEvent> events = db.searchMyEvent(eventName);
+                if (!events.isEmpty()) {
+                    eventList.addAll(events);
+                }
+            } while (eventname.moveToNext());
 
-            if (events.isEmpty()) {
+            if (eventList.isEmpty()) {
                 recyclerView.setVisibility(View.GONE); // Show placeholder view
-
+                mytext.setVisibility(View.VISIBLE); // Show empty text view
             } else {
-                eventList.addAll(events);
                 eventAdapter.notifyDataSetChanged();
-
-                recyclerView.setVisibility(View.VISIBLE); // Show placeholder view
-                mytext.setVisibility(View.GONE);
-
+                recyclerView.setVisibility(View.VISIBLE); // Show RecyclerView
+                mytext.setVisibility(View.GONE); // Hide empty text view
             }
-        }else {
+        } else {
             recyclerView.setVisibility(View.GONE); // Hide RecyclerView
             mytext.setVisibility(View.VISIBLE); // Show empty text view
         }
-
     }
     public static void openDrawer(DrawerLayout drawerLayout){
         drawerLayout.openDrawer(GravityCompat.START);

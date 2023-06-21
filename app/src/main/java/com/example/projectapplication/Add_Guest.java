@@ -131,7 +131,7 @@ public class Add_Guest extends AppCompatActivity {
         }else {
             while (data.moveToNext()){
 
-                builder.setMessage("Name\n" + data.getString(1) + "\n\n GENDER \n" + data.getString(2) + "\n\n AGE\n" + data.getString(3) + "\n\n ADDRESS \n" + data.getString(4) + "\n\nPHONE NUMBER \n" + data.getString(5) + "\n\n");
+                builder.setMessage("Name\n" + data.getString(1) + "\n\n GENDER \n" + data.getString(3) + "\n\n AGE\n" + data.getString(2) + "\n\n ADDRESS \n" + data.getString(5) + "\n\nPHONE NUMBER \n" + data.getString(4) + "\n\n");
             }
         }
 
@@ -150,10 +150,10 @@ public class Add_Guest extends AppCompatActivity {
                     if (data.moveToFirst()) {
 
                         intent.putExtra("name", data.getString(1));
-                        intent.putExtra("gender", data.getString(2));
-                        intent.putExtra("age", data.getString(3));
-                        intent.putExtra("address", data.getString(4));
-                        intent.putExtra("phoNum", data.getString(5));
+                        intent.putExtra("gender", data.getString(3));
+                        intent.putExtra("age", data.getString(2));
+                        intent.putExtra("address", data.getString(5));
+                        intent.putExtra("phoNum", data.getString(4));
                         intent.putExtra("event_name", event_name);
                     }
                     startActivity(intent);

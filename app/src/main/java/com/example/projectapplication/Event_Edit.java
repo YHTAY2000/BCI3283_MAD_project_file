@@ -28,6 +28,8 @@ public class Event_Edit extends AppCompatActivity {
     private Calendar calendar;
     private Event event;
 
+    String event_name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +55,7 @@ public class Event_Edit extends AppCompatActivity {
                 // Populate event details in UI components
                 editEventImage.setImageBitmap(BitmapUtils.getBitmapFromByteArray(event.getEventImage()));
                 editEventName.setText(event.getEventName());
+                event_name = event.getEventName();
                 editOrganizerName.setText(event.getEventOrganizer());
                 editDate.setText(event.getEventDate());
                 editTime.setText(event.getEventTime());
@@ -179,6 +182,7 @@ public class Event_Edit extends AppCompatActivity {
         // Update the event in the database
         MyDatabase db = new MyDatabase(this);
         int rowsAffected = db.updateEvent(updatedEvent);
+        db.updateEventNameforGuestManagement(event_name, eventName);
         if (rowsAffected > 0) {
             // Event updated successfully
             Toast.makeText(this, "Event updated", Toast.LENGTH_SHORT).show();

@@ -54,7 +54,7 @@ public class Guest_List extends AppCompatActivity {
         checkInRecycleView = findViewById(R.id.checkInRecycleView);
         noCheckInTextView = findViewById(R.id.noCheckInTextView);
         noCheckInTextView2 = findViewById(R.id.noCheckInTextView2);
-        eventname = (Button) findViewById(R.id.eventName);
+        eventname = findViewById(R.id.eventitle);
         total = (TextView) findViewById(R.id.totalNumber);
         total2 = (TextView) findViewById(R.id.totalNumber2);
 
