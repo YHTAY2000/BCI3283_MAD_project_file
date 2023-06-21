@@ -94,7 +94,7 @@ public class UploadActivity extends AppCompatActivity {
                 uploadAddress.getText().toString(),
                 uploadPhone.getText().toString(),
                     Integer.valueOf(uploadAge.getText().toString()), bitmapImage));
-            Intent intent = new Intent(UploadActivity.this, HomePage.class);
+            Intent intent = new Intent(UploadActivity.this, Profile.class);
             startActivity(intent);
         } else {
             Toast.makeText(this, "Fields are Mandatory", Toast.LENGTH_SHORT).show();

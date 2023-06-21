@@ -111,7 +111,7 @@ public class EditActivity extends AppCompatActivity {
                     editAddress.getText().toString(),
                     editPhone.getText().toString(),
                     Integer.valueOf(editAge.getText().toString()), bitmapImage));
-            Intent intent = new Intent(EditActivity.this, HomePage.class);
+            Intent intent = new Intent(EditActivity.this, Profile.class);
             startActivity(intent);
     }
 }

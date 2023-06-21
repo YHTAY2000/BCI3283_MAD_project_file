@@ -48,12 +48,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".RegisterPage"
             android:exported="false" />
         <activity
             android:name=".LoginPage"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Edit_Details"
             android:exported="false" />
@@ -77,13 +78,13 @@
             android:exported="false" />
         <activity
             android:name=".Guest_List"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".GuestsManagement"
             android:exported="false" />
         <activity
             android:name=".GuestAdd"
-            android:exported="true"
+            android:exported="false"
             android:label="Guest Information"
             android:parentActivityName=".GuestList" />
 
