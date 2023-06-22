@@ -15,6 +15,7 @@ public class Event_Details extends AppCompatActivity {
     private TextView eventName, organizerName, date, time, location, schedule, activity;
     private ImageView eventImage;
     private Event event;
+    String my_event_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class Event_Details extends AppCompatActivity {
             Event event = (Event) intent.getSerializableExtra("event");
             if (event != null) {
                 // Set the event details in the TextViews and ImageView
+                my_event_name = event.getEventName();
                 eventImage.setImageBitmap(BitmapUtils.getBitmapFromByteArray(event.getEventImage()));
                 eventName.setText(event.getEventName());
                 organizerName.setText(event.getEventOrganizer());
@@ -62,6 +64,7 @@ public class Event_Details extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Event_Details.this, Guest_List.class);
+                intent.putExtra("event_name", my_event_name);
                 startActivity(intent);
             }
         });
